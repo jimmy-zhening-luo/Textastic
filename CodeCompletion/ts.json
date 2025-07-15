@@ -82,7 +82,7 @@
     },
     {
       "name": "ts.keywords.declaration",
-      "defaultAppend": " ${1:name} = ",
+      "defaultAppend": " ${1:name}${2:: ${3:type}} = ",
       "strings": [
         "const",
         "let",
