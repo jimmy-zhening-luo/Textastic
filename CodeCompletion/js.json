@@ -4,7 +4,7 @@
   "completionSets": [
     {
       "name": "js.keywords.control",
-      "defaultAppend": "",
+      "defaultAppend": " ",
       "strings": [
         {
           "string": "continue",
@@ -54,7 +54,10 @@
           "string": "finally",
           "append": " {\n\t$0\n}", 
         },
-        "throw",
+        {
+          "string": "throw",
+          "append": " ${1:new ${2:Error}}",
+        },
         {
           "string": "do",
           "append": " {\n\t$0\n} while ($1);", 
@@ -106,7 +109,6 @@
         "this",
         "instanceof",
         "typeof",
-        "in",
         "import",
         "export",
         "Infinity",
