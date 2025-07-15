@@ -2,7 +2,7 @@ import linted from "linted";
 
 export default linted(
   {
-    json: {
+    jsoncc: {
       files: ["CodeCompletion/*.json"],
     },
   },
