@@ -1,0 +1,21 @@
+{
+  "uuid": "43760ABA-9793-4EBE-903A-303B15ADFFE8",
+  "category": "Blank",
+  "templates": [
+    {
+      "name": "Markdown (.md)",
+      "fileExtension": "md",
+      "snippet": ""
+    },
+    {
+      "name": "Scratch (.markdown)",
+      "fileExtension": "scratch.markdown_",
+      "snippet": ""
+    },
+    {
+      "name": "Text (.txt)",
+      "fileExtension": "txt",
+      "snippet": ""
+    }
+  ]
+}
