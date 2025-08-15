@@ -3,11 +3,6 @@
   "category": "Code",
   "templates": [
     {
-      "name": "Blink Snip (.sh)",
-      "fileExtension": "sh",
-      "snippet": "cls || clear\ngit status\ngit reset --hard\ngit checkout dev\ngit status\ngit pull\ngit status\n$0\ngit status"
-    },
-    {
       "name": "Scriptable (.ts)",
       "fileExtension": "ts",
       "snippet": "// Variables used by Scriptable.\n// These must be at the very top of the file. Do not edit.\n// icon-color: ${1:deep-gray}; icon-glyph: ${2:pen};\n\"use strict\";\n\nimport type { Shortcut } from \"./lib\";\n\nclass ${3:APP} extends importModule<typeof Shortcut<\n\t${4:INPUT},\n\t${5:OUTPUT},\n\t${6:SETTING}\n>>(\"./lib\") {\n\tprotected runtime() {\n\t\t$0\n\t}\n}\n\nnew $3().run();\n"
