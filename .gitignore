@@ -1,5 +1,4 @@
 .vscode/**
-!.vscode/**/*.code-snippets
 .Trash/
-*.icloud
 .blink*
+*.icloud
