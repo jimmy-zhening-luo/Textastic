@@ -5,7 +5,7 @@
     {
       "name": "Scriptable",
       "fileExtension": "ts",
-      "snippet": "// icon-color: ${1:deep-gray}; icon-glyph: ${2:pen};\nimport ${3:Shortcut} from \"./core${4:/${5:widget}}\";\n\nclass ${6:APP} extends $3 {\n\tprotected ${7:${8:async} }runtime() {\n\t\t$0\n\t}\n}\n\n${9:await} new $6().run();\n"
+      "snippet": "// icon-color: ${1:deep-gray}; icon-glyph: ${2:pen};\nimport ${3:Shortcut} from \"./core${4:/${5:widget}}\";\n\nclass ${6:App} extends $3 {\n\tprotected ${7:${8:async} }runtime() {\n\t\t$0\n\t}\n}\n\n${9:await} new $6().run();\n"
     }
   ]
 }
