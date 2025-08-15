@@ -14,6 +14,8 @@ https://www.textasticapp.com/v10/manual
 https://github.com/blach/Textastic-Customization
 ```
 
+[Syntax](https://macromates.com/manual/en/snippets)
+
 ### Interesting behavior
 [Thread](https://feedback.textasticapp.com/communities/1/topics/1748-how-to-set-completion-file)
 
