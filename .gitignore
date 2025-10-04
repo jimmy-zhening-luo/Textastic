@@ -1,4 +1,5 @@
 .vscode/
 .Trash/
-.blink*
+.DS_Store
 *.icloud
+*.blink*
