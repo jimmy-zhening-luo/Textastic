@@ -1,5 +1,5 @@
 {
-  "description": "Textastic Code Completion for JavaScript",
+  "description": "Textastic Code Completion for JavaScript and TypeScript",
   "uuid": "DE267669-E66E-400A-ACEA-BD906DC2B812",
   "completionSets": [
     {
@@ -81,8 +81,7 @@
         {
           "string": "else if",
           "append": " ($1) {\n\t$0\n}",
-        },
-      ],
+        }],
     },
     {
       "name": "js.keywords.declaration",
@@ -117,6 +116,27 @@
         "true",
         "false",
         "null",
+      ],
+    },
+    {
+      "name": "js.keywords.type",
+      "defaultAppend": "",
+      "strings": [
+        "readonly",
+        "public",
+        "protected",
+        "private",
+        "abstract",
+        "override",
+        "implements",
+        "type",
+        "interface",
+        "satisfies",
+        "as",
+        "keyof",
+        "never",
+        "unknown",
+        "declare",
       ],
     },
     {
@@ -160,7 +180,13 @@
     },
     {
       "name": "js.native-objects.Date",
+      "defaultAppend": "()",
       "strings": [
+        "now",
+        {
+          "string": "parse",
+          "append": "(${1:dateString})",
+        },
         {
           "string": "UTC",
           "append": "(${1:yyyy}, ${2:mm}, ${3:dd}${4:, ${5:hh}, ${6:mm}, ${7:ss}, ${8:ms}})",
@@ -267,8 +293,7 @@
         {
           "string": "fromCharCode",
           "append": "(${1:num1}${2:, ${3:num2 ...}})",
-        },
-      ],
+        }],
     },
     {
       "name": "js.native-objects.Node",
@@ -938,8 +963,7 @@
         {
           "string": "replace",
           "append": "(${1:URL})",
-        },
-      ],
+        }],
     },
     // Screen
     {
@@ -1018,8 +1042,7 @@
         {
           "string": "setTimeout",
           "append": "(${1:functionReference}, ${2:milliseconds})",
-        },
-      ],
+        }],
     },
     {
       "name": "js.dom.window.methods",
@@ -1084,8 +1107,7 @@
         {
           "string": "clear",
           "append": "()",
-        },
-      ],
+        }],
     },
   ],
   "contexts": [

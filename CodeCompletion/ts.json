@@ -1,5 +1,5 @@
 {
-  "description": "Textastic Code Completion for TypeScript",
+  "description": "Textastic Code Completion for JavaScript and TypeScript",
   "uuid": "FE9D1AC2-ADA0-44AE-9093-C59286290A63",
   "completionSets": [
     {
@@ -104,25 +104,10 @@
         "delete",
         "class",
         "extends",
-        "readonly",
-        "public",
-        "protected",
-        "private",
-        "abstract",
-        "override",
-        "implements",
         "super",
         "this",
         "instanceof",
         "typeof",
-        "type",
-        "interface",
-        "satisfies",
-        "as",
-        "keyof",
-        "never",
-        "unknown",
-        "declare",
         "import",
         "export",
         "Infinity",
@@ -131,6 +116,27 @@
         "true",
         "false",
         "null",
+      ],
+    },
+    {
+      "name": "ts.keywords.type",
+      "defaultAppend": "",
+      "strings": [
+        "readonly",
+        "public",
+        "protected",
+        "private",
+        "abstract",
+        "override",
+        "implements",
+        "type",
+        "interface",
+        "satisfies",
+        "as",
+        "keyof",
+        "never",
+        "unknown",
+        "declare",
       ],
     },
     {
@@ -174,11 +180,18 @@
     },
     {
       "name": "ts.native-objects.Date",
+      "defaultAppend": "()",
       "strings": [
+        "now",
+        {
+          "string": "parse",
+          "append": "(${1:dateString})",
+        },
         {
           "string": "UTC",
           "append": "(${1:yyyy}, ${2:mm}, ${3:dd}${4:, ${5:hh}, ${6:mm}, ${7:ss}, ${8:ms}})",
-        }],
+        },
+      ],
     },
     {
       "name": "ts.native-objects.Math",
@@ -410,10 +423,6 @@
         "getUTCMonth",
         "getUTCSeconds",
         "getYear",
-        {
-          "string": "parse",
-          "append": "(${1:dateString})",
-        },
         {
           "string": "setDate",
           "append": "(${1:dateInteger})",
@@ -1124,6 +1133,7 @@
       "completionSetNames": [
         "ts.keywords",
         "ts.keywords.declaration",
+        "ts.keywords.type",
       ],
     },
     {
