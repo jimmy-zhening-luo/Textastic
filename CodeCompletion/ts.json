@@ -3,7 +3,7 @@
   "uuid": "FE9D1AC2-ADA0-44AE-9093-C59286290A63",
   "contexts": [
     {
-      "scope": "source.js - comment - string",
+      "scope": "source.ts - comment - string",
       "pattern": "(?<!\\.|\\[|\\(|,)\\b([a-zA-Z]+)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
@@ -11,7 +11,7 @@
       ],
     },
     {
-      "scope": "source.js - comment - string",
+      "scope": "source.ts - comment - string",
       "pattern": "(?<!\\.|\\[|\\(|,)\\b(e[lse if]*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
@@ -19,7 +19,7 @@
       ],
     },
     {
-      "scope": "source.js - comment - string",
+      "scope": "source.ts - comment - string",
       "pattern": "(?<!\\.)\\b([a-zA-Z]+)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
@@ -28,7 +28,7 @@
       ],
     },
     {
-      "scope": "source.js - comment - string",
+      "scope": "source.ts - comment - string",
       "pattern": "(?<!\\.)\\b([a-zA-Z]+)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
@@ -38,7 +38,7 @@
       ],
     },
     {
-      "scope": "source.js - comment - string",
+      "scope": "source.ts - comment - string",
       "pattern": "\\.([a-zA-Z][a-zA-Z ]*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
@@ -49,7 +49,7 @@
       ],
     },
     {
-      "scope": "source.js - comment - string",
+      "scope": "source.ts - comment - string",
       "pattern": "\\bnew\\s+([a-zA-Z]*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
@@ -58,7 +58,7 @@
       ],
     },
     {
-      "scope": "source.js - comment - string",
+      "scope": "source.ts - comment - string",
       "pattern": "(?<!new )\\b([A-Z][a-zA-Z]*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
@@ -66,7 +66,7 @@
       ],
     },
     {
-      "scope": "source.js - comment - string",
+      "scope": "source.ts - comment - string",
       "pattern": "\\bDate\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
@@ -74,7 +74,7 @@
       ],
     },
     {
-      "scope": "source.js - comment - string",
+      "scope": "source.ts - comment - string",
       "pattern": "\\bMath\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
@@ -82,7 +82,7 @@
       ],
     },
     {
-      "scope": "source.js - comment - string",
+      "scope": "source.ts - comment - string",
       "pattern": "\\bNumber\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
@@ -90,7 +90,7 @@
       ],
     },
     {
-      "scope": "source.js - comment - string",
+      "scope": "source.ts - comment - string",
       "pattern": "\\bString\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
@@ -98,7 +98,7 @@
       ],
     },
     {
-      "scope": "source.js - comment - string",
+      "scope": "source.ts - comment - string",
       "pattern": "\\bNode\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
@@ -106,7 +106,7 @@
       ],
     },
     {
-      "scope": "source.js string",
+      "scope": "source.ts string",
       "pattern": "\\b(?:addEventListener|removeEventListener)\\s*\\(\\s*['\"]([a-zA-Z]*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
@@ -115,7 +115,7 @@
     },
     // DOM properties and methods
     {
-      "scope": "source.js - comment - string",
+      "scope": "source.ts - comment - string",
       "pattern": "\\bconsole\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
@@ -123,7 +123,7 @@
       ],
     },
     {
-      "scope": "source.js - comment - string",
+      "scope": "source.ts - comment - string",
       "pattern": "\\bdocument\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
@@ -132,7 +132,7 @@
       ],
     },
     {
-      "scope": "source.js - comment - string",
+      "scope": "source.ts - comment - string",
       "pattern": "\\bhistory\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
@@ -141,7 +141,7 @@
       ],
     },
     {
-      "scope": "source.js - comment - string",
+      "scope": "source.ts - comment - string",
       "pattern": "\\blocation\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
@@ -150,7 +150,7 @@
       ],
     },
     {
-      "scope": "source.js - comment - string",
+      "scope": "source.ts - comment - string",
       "pattern": "\\bscreen\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
@@ -158,7 +158,7 @@
       ],
     },
     {
-      "scope": "source.js - comment - string",
+      "scope": "source.ts - comment - string",
       "pattern": "\\blocalStorage\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
@@ -166,7 +166,7 @@
       ],
     },
     {
-      "scope": "source.js - comment - string",
+      "scope": "source.ts - comment - string",
       "pattern": "\\b(window|opener|parent|self|top)\\.(\\w*)",
       "completionCaptureIndex": 2,
       "completionSetNames": [
