@@ -28,11 +28,11 @@
         },
         {
           "string": "switch",
-          "append": " ($1) {\n\t$0\n}",
+          "append": " ($1) {\n$0\n}",
         },
         {
           "string": "case",
-          "append": " ${1:condition}: ",
+          "append": " ${1:condition}:\n\t",
         },
         {
           "string": "break",
