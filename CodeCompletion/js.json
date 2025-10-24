@@ -3,7 +3,6 @@
   "uuid": "FE9D1AC2-ADA0-44AE-9093-C59286290A63",
   "contexts": [
     {
-      "description": "Control keywords",
       "scope": "source.ts - comment - string",
       "pattern": "(?<!\\.|\\[|\\(|,)\\b([a-zA-Z]+)",
       "completionCaptureIndex": 1,
@@ -12,7 +11,6 @@
       ],
     },
     {
-      "description": "else if keyword",
       "scope": "source.ts - comment - string",
       "pattern": "(?<!\\.|\\[|\\(|,)\\b(e[lse if]*)",
       "completionCaptureIndex": 1,
@@ -21,7 +19,6 @@
       ],
     },
     {
-      "description": "Non-control keywords",
       "scope": "source.ts - comment - string",
       "pattern": "(?<!\\.)\\b([a-zA-Z]+)",
       "completionCaptureIndex": 1,
@@ -31,7 +28,6 @@
       ],
     },
     {
-      "description": "Variables and functions",
       "scope": "source.ts - comment - string",
       "pattern": "(?<!\\.)\\b([a-zA-Z]+)",
       "completionCaptureIndex": 1,
@@ -42,7 +38,6 @@
       ],
     },
     {
-      "description": "Properties and methods",
       "scope": "source.ts - comment - string",
       "pattern": "\\.([a-zA-Z][a-zA-Z ]*)",
       "completionCaptureIndex": 1,
@@ -54,7 +49,6 @@
       ],
     },
     {
-      "description": "Native objects",
       "scope": "source.ts - comment - string",
       "pattern": "\\bnew\\s+([a-zA-Z]*)",
       "completionCaptureIndex": 1,
@@ -64,7 +58,6 @@
       ],
     },
     {
-      "description": "Native objects, without \"new\"",
       "scope": "source.ts - comment - string",
       "pattern": "(?<!new )\\b([A-Z][a-zA-Z]*)",
       "completionCaptureIndex": 1,
@@ -73,7 +66,6 @@
       ],
     },
     {
-      "description": "Native objects, Date",
       "scope": "source.ts - comment - string",
       "pattern": "\\bDate\\.(\\w*)",
       "completionCaptureIndex": 1,
@@ -82,7 +74,6 @@
       ],
     },
     {
-      "description": "Native objects, Math",
       "scope": "source.ts - comment - string",
       "pattern": "\\bMath\\.(\\w*)",
       "completionCaptureIndex": 1,
@@ -91,7 +82,6 @@
       ],
     },
     {
-      "description": "Native objects, Number",
       "scope": "source.ts - comment - string",
       "pattern": "\\bNumber\\.(\\w*)",
       "completionCaptureIndex": 1,
@@ -100,7 +90,6 @@
       ],
     },
     {
-      "description": "Native objects, String",
       "scope": "source.ts - comment - string",
       "pattern": "\\bString\\.(\\w*)",
       "completionCaptureIndex": 1,
@@ -109,7 +98,6 @@
       ],
     },
     {
-      "description": "Native objects, Node",
       "scope": "source.ts - comment - string",
       "pattern": "\\bNode\\.(\\w*)",
       "completionCaptureIndex": 1,
@@ -118,7 +106,6 @@
       ],
     },
     {
-      "description": "DOM events",
       "scope": "source.ts string",
       "pattern": "\\b(?:addEventListener|removeEventListener)\\s*\\(\\s*['\"]([a-zA-Z]*)",
       "completionCaptureIndex": 1,
@@ -128,7 +115,6 @@
     },
     // DOM properties and methods
     {
-      "description": "console",
       "scope": "source.ts - comment - string",
       "pattern": "\\bconsole\\.(\\w*)",
       "completionCaptureIndex": 1,
@@ -137,7 +123,6 @@
       ],
     },
     {
-      "description": "document",
       "scope": "source.ts - comment - string",
       "pattern": "\\bdocument\\.(\\w*)",
       "completionCaptureIndex": 1,
@@ -147,7 +132,6 @@
       ],
     },
     {
-      "description": "history",
       "scope": "source.ts - comment - string",
       "pattern": "\\bhistory\\.(\\w*)",
       "completionCaptureIndex": 1,
@@ -157,7 +141,6 @@
       ],
     },
     {
-      "description": "location",
       "scope": "source.ts - comment - string",
       "pattern": "\\blocation\\.(\\w*)",
       "completionCaptureIndex": 1,
@@ -167,7 +150,6 @@
       ],
     },
     {
-      "description": "screen",
       "scope": "source.ts - comment - string",
       "pattern": "\\bscreen\\.(\\w*)",
       "completionCaptureIndex": 1,
@@ -176,7 +158,6 @@
       ],
     },
     {
-      "description": "localStorage",
       "scope": "source.ts - comment - string",
       "pattern": "\\blocalStorage\\.(\\w*)",
       "completionCaptureIndex": 1,
@@ -185,7 +166,6 @@
       ],
     },
     {
-      "description": "window",
       "scope": "source.ts - comment - string",
       "pattern": "\\b(window|opener|parent|self|top)\\.(\\w*)",
       "completionCaptureIndex": 2,

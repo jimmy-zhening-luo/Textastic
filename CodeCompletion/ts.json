@@ -1,6 +1,181 @@
 {
   "description": "Textastic Code Completion for JavaScript and TypeScript",
   "uuid": "FE9D1AC2-ADA0-44AE-9093-C59286290A63",
+  "contexts": [
+    {
+      "scope": "source.js - comment - string",
+      "pattern": "(?<!\\.|\\[|\\(|,)\\b([a-zA-Z]+)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "keywords.control",
+      ],
+    },
+    {
+      "scope": "source.js - comment - string",
+      "pattern": "(?<!\\.|\\[|\\(|,)\\b(e[lse if]*)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "keywords.control.else-if",
+      ],
+    },
+    {
+      "scope": "source.js - comment - string",
+      "pattern": "(?<!\\.)\\b([a-zA-Z]+)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "keywords",
+        "keywords.declaration",
+      ],
+    },
+    {
+      "scope": "source.js - comment - string",
+      "pattern": "(?<!\\.)\\b([a-zA-Z]+)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "functions",
+        "dom.variables",
+        "dom.window.methods.global",
+      ],
+    },
+    {
+      "scope": "source.js - comment - string",
+      "pattern": "\\.([a-zA-Z][a-zA-Z ]*)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "properties",
+        "methods",
+        "dom.properties",
+        "dom.methods",
+      ],
+    },
+    {
+      "scope": "source.js - comment - string",
+      "pattern": "\\bnew\\s+([a-zA-Z]*)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "native-objects",
+        "native-errors",
+      ],
+    },
+    {
+      "scope": "source.js - comment - string",
+      "pattern": "(?<!new )\\b([A-Z][a-zA-Z]*)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "native-objects.static",
+      ],
+    },
+    {
+      "scope": "source.js - comment - string",
+      "pattern": "\\bDate\\.(\\w*)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "native-objects.Date",
+      ],
+    },
+    {
+      "scope": "source.js - comment - string",
+      "pattern": "\\bMath\\.(\\w*)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "native-objects.Math",
+      ],
+    },
+    {
+      "scope": "source.js - comment - string",
+      "pattern": "\\bNumber\\.(\\w*)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "native-objects.Number",
+      ],
+    },
+    {
+      "scope": "source.js - comment - string",
+      "pattern": "\\bString\\.(\\w*)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "native-objects.String",
+      ],
+    },
+    {
+      "scope": "source.js - comment - string",
+      "pattern": "\\bNode\\.(\\w*)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "native-objects.Node",
+      ],
+    },
+    {
+      "scope": "source.js string",
+      "pattern": "\\b(?:addEventListener|removeEventListener)\\s*\\(\\s*['\"]([a-zA-Z]*)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "dom.events",
+      ],
+    },
+    // DOM properties and methods
+    {
+      "scope": "source.js - comment - string",
+      "pattern": "\\bconsole\\.(\\w*)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "dom.console.methods",
+      ],
+    },
+    {
+      "scope": "source.js - comment - string",
+      "pattern": "\\bdocument\\.(\\w*)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "dom.document.properties",
+        "dom.document.methods",
+      ],
+    },
+    {
+      "scope": "source.js - comment - string",
+      "pattern": "\\bhistory\\.(\\w*)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "dom.history.properties",
+        "dom.history.methods",
+      ],
+    },
+    {
+      "scope": "source.js - comment - string",
+      "pattern": "\\blocation\\.(\\w*)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "dom.location.properties",
+        "dom.location.methods",
+      ],
+    },
+    {
+      "scope": "source.js - comment - string",
+      "pattern": "\\bscreen\\.(\\w*)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "dom.screen.properties",
+      ],
+    },
+    {
+      "scope": "source.js - comment - string",
+      "pattern": "\\blocalStorage\\.(\\w*)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "dom.localStorage.methods",
+      ],
+    },
+    {
+      "scope": "source.js - comment - string",
+      "pattern": "\\b(window|opener|parent|self|top)\\.(\\w*)",
+      "completionCaptureIndex": 2,
+      "completionSetNames": [
+        "dom.window.properties",
+        "dom.window.methods",
+        "dom.window.methods.global",
+      ],
+    },
+  ],
   "completionSets": [
     {
       "name": "keywords.control",
@@ -1104,201 +1279,6 @@
           "string": "clear",
           "append": "()",
         }],
-    },
-  ],
-  "contexts": [
-    {
-      "description": "Control keywords",
-      "scope": "source.ts - comment - string",
-      "pattern": "(?<!\\.|\\[|\\(|,)\\b([a-zA-Z]+)",
-      "completionCaptureIndex": 1,
-      "completionSetNames": [
-        "keywords.control",
-      ],
-    },
-    {
-      "description": "else if keyword",
-      "scope": "source.ts - comment - string",
-      "pattern": "(?<!\\.|\\[|\\(|,)\\b(e[lse if]*)",
-      "completionCaptureIndex": 1,
-      "completionSetNames": [
-        "keywords.control.else-if",
-      ],
-    },
-    {
-      "description": "Non-control keywords",
-      "scope": "source.ts - comment - string",
-      "pattern": "(?<!\\.)\\b([a-zA-Z]+)",
-      "completionCaptureIndex": 1,
-      "completionSetNames": [
-        "keywords",
-        "keywords.declaration",
-      ],
-    },
-    {
-      "description": "Variables and functions",
-      "scope": "source.ts - comment - string",
-      "pattern": "(?<!\\.)\\b([a-zA-Z]+)",
-      "completionCaptureIndex": 1,
-      "completionSetNames": [
-        "functions",
-        "dom.variables",
-        "dom.window.methods.global",
-      ],
-    },
-    {
-      "description": "Properties and methods",
-      "scope": "source.ts - comment - string",
-      "pattern": "\\.([a-zA-Z][a-zA-Z ]*)",
-      "completionCaptureIndex": 1,
-      "completionSetNames": [
-        "properties",
-        "methods",
-        "dom.properties",
-        "dom.methods",
-      ],
-    },
-    {
-      "description": "Native objects",
-      "scope": "source.ts - comment - string",
-      "pattern": "\\bnew\\s+([a-zA-Z]*)",
-      "completionCaptureIndex": 1,
-      "completionSetNames": [
-        "native-objects",
-        "native-errors",
-      ],
-    },
-    {
-      "description": "Native objects, without \"new\"",
-      "scope": "source.ts - comment - string",
-      "pattern": "(?<!new )\\b([A-Z][a-zA-Z]*)",
-      "completionCaptureIndex": 1,
-      "completionSetNames": [
-        "native-objects.static",
-      ],
-    },
-    {
-      "description": "Native objects, Date",
-      "scope": "source.ts - comment - string",
-      "pattern": "\\bDate\\.(\\w*)",
-      "completionCaptureIndex": 1,
-      "completionSetNames": [
-        "native-objects.Date",
-      ],
-    },
-    {
-      "description": "Native objects, Math",
-      "scope": "source.ts - comment - string",
-      "pattern": "\\bMath\\.(\\w*)",
-      "completionCaptureIndex": 1,
-      "completionSetNames": [
-        "native-objects.Math",
-      ],
-    },
-    {
-      "description": "Native objects, Number",
-      "scope": "source.ts - comment - string",
-      "pattern": "\\bNumber\\.(\\w*)",
-      "completionCaptureIndex": 1,
-      "completionSetNames": [
-        "native-objects.Number",
-      ],
-    },
-    {
-      "description": "Native objects, String",
-      "scope": "source.ts - comment - string",
-      "pattern": "\\bString\\.(\\w*)",
-      "completionCaptureIndex": 1,
-      "completionSetNames": [
-        "native-objects.String",
-      ],
-    },
-    {
-      "description": "Native objects, Node",
-      "scope": "source.ts - comment - string",
-      "pattern": "\\bNode\\.(\\w*)",
-      "completionCaptureIndex": 1,
-      "completionSetNames": [
-        "native-objects.Node",
-      ],
-    },
-    {
-      "description": "DOM events",
-      "scope": "source.ts string",
-      "pattern": "\\b(?:addEventListener|removeEventListener)\\s*\\(\\s*['\"]([a-zA-Z]*)",
-      "completionCaptureIndex": 1,
-      "completionSetNames": [
-        "dom.events",
-      ],
-    },
-    // DOM properties and methods
-    {
-      "description": "console",
-      "scope": "source.ts - comment - string",
-      "pattern": "\\bconsole\\.(\\w*)",
-      "completionCaptureIndex": 1,
-      "completionSetNames": [
-        "dom.console.methods",
-      ],
-    },
-    {
-      "description": "document",
-      "scope": "source.ts - comment - string",
-      "pattern": "\\bdocument\\.(\\w*)",
-      "completionCaptureIndex": 1,
-      "completionSetNames": [
-        "dom.document.properties",
-        "dom.document.methods",
-      ],
-    },
-    {
-      "description": "history",
-      "scope": "source.ts - comment - string",
-      "pattern": "\\bhistory\\.(\\w*)",
-      "completionCaptureIndex": 1,
-      "completionSetNames": [
-        "dom.history.properties",
-        "dom.history.methods",
-      ],
-    },
-    {
-      "description": "location",
-      "scope": "source.ts - comment - string",
-      "pattern": "\\blocation\\.(\\w*)",
-      "completionCaptureIndex": 1,
-      "completionSetNames": [
-        "dom.location.properties",
-        "dom.location.methods",
-      ],
-    },
-    {
-      "description": "screen",
-      "scope": "source.ts - comment - string",
-      "pattern": "\\bscreen\\.(\\w*)",
-      "completionCaptureIndex": 1,
-      "completionSetNames": [
-        "dom.screen.properties",
-      ],
-    },
-    {
-      "description": "localStorage",
-      "scope": "source.ts - comment - string",
-      "pattern": "\\blocalStorage\\.(\\w*)",
-      "completionCaptureIndex": 1,
-      "completionSetNames": [
-        "dom.localStorage.methods",
-      ],
-    },
-    {
-      "description": "window",
-      "scope": "source.ts - comment - string",
-      "pattern": "\\b(window|opener|parent|self|top)\\.(\\w*)",
-      "completionCaptureIndex": 2,
-      "completionSetNames": [
-        "dom.window.properties",
-        "dom.window.methods",
-        "dom.window.methods.global",
-      ],
     },
   ],
 }
