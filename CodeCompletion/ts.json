@@ -3,7 +3,7 @@
   "uuid": "FE9D1AC2-ADA0-44AE-9093-C59286290A63",
   "completionSets": [
     {
-      "name": "ts.keywords.control",
+      "name": "keywords.control",
       "defaultAppend": " ",
       "strings": [
         {
@@ -76,7 +76,7 @@
       ],
     },
     {
-      "name": "ts.keywords.control.else-if",
+      "name": "keywords.control.else-if",
       "strings": [
         {
           "string": "else if",
@@ -84,7 +84,7 @@
         }],
     },
     {
-      "name": "ts.keywords.declaration",
+      "name": "keywords.declaration",
       "defaultAppend": " ${1:name} = ",
       "strings": [
         "const",
@@ -93,7 +93,7 @@
       ],
     },
     {
-      "name": "ts.keywords",
+      "name": "keywords",
       "defaultAppend": "",
       "strings": [
         {
@@ -119,7 +119,7 @@
       ],
     },
     {
-      "name": "ts.keywords.type",
+      "name": "keywords.type",
       "defaultAppend": "",
       "strings": [
         "readonly",
@@ -140,7 +140,7 @@
       ],
     },
     {
-      "name": "ts.native-objects",
+      "name": "native-objects",
       "defaultAppend": "($1)",
       "strings": [
         "Array",
@@ -156,7 +156,7 @@
       ],
     },
     {
-      "name": "ts.native-errors",
+      "name": "native-errors",
       "defaultAppend": "(${1:\"${2:message}\"}${3:, { cause: ${4:cause} \\}})",
       "strings": [
         "Error",
@@ -169,7 +169,7 @@
       ],
     },
     {
-      "name": "ts.native-objects.static",
+      "name": "native-objects.static",
       "strings": [
         "Date",
         "Math",
@@ -179,7 +179,7 @@
       ],
     },
     {
-      "name": "ts.native-objects.Date",
+      "name": "native-objects.Date",
       "defaultAppend": "()",
       "strings": [
         "now",
@@ -194,7 +194,7 @@
       ],
     },
     {
-      "name": "ts.native-objects.Math",
+      "name": "native-objects.Math",
       "strings": [
         "E",
         "LN2",
@@ -279,7 +279,7 @@
       ],
     },
     {
-      "name": "ts.native-objects.Number",
+      "name": "native-objects.Number",
       "strings": [
         "MAX_VALUE",
         "MIN_VALUE",
@@ -288,7 +288,7 @@
       ],
     },
     {
-      "name": "ts.native-objects.String",
+      "name": "native-objects.String",
       "strings": [
         {
           "string": "fromCharCode",
@@ -296,7 +296,7 @@
         }],
     },
     {
-      "name": "ts.native-objects.Node",
+      "name": "native-objects.Node",
       "strings": [
         "ATTRIBUTE_NODE",
         "CDATA_SECTION_NODE",
@@ -313,7 +313,7 @@
       ],
     },
     {
-      "name": "ts.functions",
+      "name": "functions",
       "defaultAppend": "(${1:string})",
       "strings": [
         {
@@ -345,7 +345,7 @@
       ],
     },
     {
-      "name": "ts.properties",
+      "name": "properties",
       "strings": [
         // common
         "constructor",
@@ -364,7 +364,7 @@
       ],
     },
     {
-      "name": "ts.methods",
+      "name": "methods",
       "defaultAppend": "()",
       "strings": [
         // common
@@ -595,7 +595,7 @@
     // DOM support
     // DOM variables
     {
-      "name": "ts.dom.variables",
+      "name": "dom.variables",
       "strings": [
         "console",
         "document",
@@ -611,7 +611,7 @@
     },
     // DOM properties
     {
-      "name": "ts.dom.properties",
+      "name": "dom.properties",
       "strings": [
         "accessKey",
         "attributes",
@@ -653,7 +653,7 @@
     },
     // DOM methods
     {
-      "name": "ts.dom.methods",
+      "name": "dom.methods",
       "defaultAppend": "()",
       "strings": [
         {
@@ -770,7 +770,7 @@
     },
     // Event Strings
     {
-      "name": "ts.dom.events",
+      "name": "dom.events",
       "strings": [
         "abort",
         "blur",
@@ -795,7 +795,7 @@
     },
     // console
     {
-      "name": "ts.dom.console.methods",
+      "name": "dom.console.methods",
       "defaultAppend": "($1)",
       "strings": [
         "log",
@@ -805,7 +805,7 @@
     },
     // Document
     {
-      "name": "ts.dom.document.properties",
+      "name": "dom.document.properties",
       "strings": [
         "anchors",
         "applets",
@@ -831,7 +831,7 @@
       ],
     },
     {
-      "name": "ts.dom.document.methods",
+      "name": "dom.document.methods",
       "defaultAppend": "()",
       "strings": [
         "clear",
@@ -918,13 +918,13 @@
     },
     // History
     {
-      "name": "ts.dom.history.properties",
+      "name": "dom.history.properties",
       "strings": [
         "length",
       ],
     },
     {
-      "name": "ts.dom.history.methods",
+      "name": "dom.history.methods",
       "defaultAppend": "()",
       "strings": [
         "back",
@@ -937,7 +937,7 @@
     },
     // Location
     {
-      "name": "ts.dom.location.properties",
+      "name": "dom.location.properties",
       "strings": [
         "hash",
         "host",
@@ -950,7 +950,7 @@
       ],
     },
     {
-      "name": "ts.dom.location.methods",
+      "name": "dom.location.methods",
       "strings": [
         {
           "string": "reload",
@@ -963,7 +963,7 @@
     },
     // Screen
     {
-      "name": "ts.dom.screen.properties",
+      "name": "dom.screen.properties",
       "strings": [
         "availHeight",
         "availWidth",
@@ -977,7 +977,7 @@
     },
     // Window
     {
-      "name": "ts.dom.window.properties",
+      "name": "dom.window.properties",
       "strings": [
         "closed",
         "defaultStatus",
@@ -1009,7 +1009,7 @@
       ],
     },
     {
-      "name": "ts.dom.window.methods.global",
+      "name": "dom.window.methods.global",
       "strings": [
         {
           "string": "alert",
@@ -1041,7 +1041,7 @@
         }],
     },
     {
-      "name": "ts.dom.window.methods",
+      "name": "dom.window.methods",
       "defaultAppend": "()",
       "strings": [
         "close",
@@ -1082,7 +1082,7 @@
       ],
     },
     {
-      "name": "ts.dom.localStorage.methods",
+      "name": "dom.localStorage.methods",
       "strings": [
         {
           "string": "key",
@@ -1113,7 +1113,7 @@
       "pattern": "(?<!\\.|\\[|\\(|,)\\b([a-zA-Z]+)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "ts.keywords.control",
+        "keywords.control",
       ],
     },
     {
@@ -1122,7 +1122,7 @@
       "pattern": "(?<!\\.|\\[|\\(|,)\\b(e[lse if]*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "ts.keywords.control.else-if",
+        "keywords.control.else-if",
       ],
     },
     {
@@ -1131,9 +1131,8 @@
       "pattern": "(?<!\\.)\\b([a-zA-Z]+)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "ts.keywords",
-        "ts.keywords.declaration",
-        "ts.keywords.type",
+        "keywords",
+        "keywords.declaration",
       ],
     },
     {
@@ -1142,9 +1141,9 @@
       "pattern": "(?<!\\.)\\b([a-zA-Z]+)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "ts.functions",
-        "ts.dom.variables",
-        "ts.dom.window.methods.global",
+        "functions",
+        "dom.variables",
+        "dom.window.methods.global",
       ],
     },
     {
@@ -1153,10 +1152,10 @@
       "pattern": "\\.([a-zA-Z][a-zA-Z ]*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "ts.properties",
-        "ts.methods",
-        "ts.dom.properties",
-        "ts.dom.methods",
+        "properties",
+        "methods",
+        "dom.properties",
+        "dom.methods",
       ],
     },
     {
@@ -1165,8 +1164,8 @@
       "pattern": "\\bnew\\s+([a-zA-Z]*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "ts.native-objects",
-        "ts.native-errors",
+        "native-objects",
+        "native-errors",
       ],
     },
     {
@@ -1175,7 +1174,7 @@
       "pattern": "(?<!new )\\b([A-Z][a-zA-Z]*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "ts.native-objects.static",
+        "native-objects.static",
       ],
     },
     {
@@ -1184,7 +1183,7 @@
       "pattern": "\\bDate\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "ts.native-objects.Date",
+        "native-objects.Date",
       ],
     },
     {
@@ -1193,7 +1192,7 @@
       "pattern": "\\bMath\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "ts.native-objects.Math",
+        "native-objects.Math",
       ],
     },
     {
@@ -1202,7 +1201,7 @@
       "pattern": "\\bNumber\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "ts.native-objects.Number",
+        "native-objects.Number",
       ],
     },
     {
@@ -1211,7 +1210,7 @@
       "pattern": "\\bString\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "ts.native-objects.String",
+        "native-objects.String",
       ],
     },
     {
@@ -1220,7 +1219,7 @@
       "pattern": "\\bNode\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "ts.native-objects.Node",
+        "native-objects.Node",
       ],
     },
     {
@@ -1229,7 +1228,7 @@
       "pattern": "\\b(?:addEventListener|removeEventListener)\\s*\\(\\s*['\"]([a-zA-Z]*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "ts.dom.events",
+        "dom.events",
       ],
     },
     // DOM properties and methods
@@ -1239,7 +1238,7 @@
       "pattern": "\\bconsole\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "ts.dom.console.methods",
+        "dom.console.methods",
       ],
     },
     {
@@ -1248,8 +1247,8 @@
       "pattern": "\\bdocument\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "ts.dom.document.properties",
-        "ts.dom.document.methods",
+        "dom.document.properties",
+        "dom.document.methods",
       ],
     },
     {
@@ -1258,8 +1257,8 @@
       "pattern": "\\bhistory\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "ts.dom.history.properties",
-        "ts.dom.history.methods",
+        "dom.history.properties",
+        "dom.history.methods",
       ],
     },
     {
@@ -1268,8 +1267,8 @@
       "pattern": "\\blocation\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "ts.dom.location.properties",
-        "ts.dom.location.methods",
+        "dom.location.properties",
+        "dom.location.methods",
       ],
     },
     {
@@ -1278,7 +1277,7 @@
       "pattern": "\\bscreen\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "ts.dom.screen.properties",
+        "dom.screen.properties",
       ],
     },
     {
@@ -1287,7 +1286,7 @@
       "pattern": "\\blocalStorage\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "ts.dom.localStorage.methods",
+        "dom.localStorage.methods",
       ],
     },
     {
@@ -1296,9 +1295,9 @@
       "pattern": "\\b(window|opener|parent|self|top)\\.(\\w*)",
       "completionCaptureIndex": 2,
       "completionSetNames": [
-        "ts.dom.window.properties",
-        "ts.dom.window.methods",
-        "ts.dom.window.methods.global",
+        "dom.window.properties",
+        "dom.window.methods",
+        "dom.window.methods.global",
       ],
     },
   ],
