@@ -4,6 +4,15 @@
   "contexts": [
     {
       "scope": "(source.ts|source.js) - comment - string",
+      "pattern": "(?<!\\.)\\b([a-zA-Z]+)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "keywords",
+        "keywords.declaration",
+      ],
+    },
+    {
+      "scope": "(source.ts|source.js) - comment - string",
       "pattern": "(?<!\\.|\\[|\\(|,)\\b([a-zA-Z]+)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
@@ -16,15 +25,6 @@
       "completionCaptureIndex": 1,
       "completionSetNames": [
         "keywords.control.else-if",
-      ],
-    },
-    {
-      "scope": "(source.ts|source.js) - comment - string",
-      "pattern": "(?<!\\.)\\b([a-zA-Z]+)",
-      "completionCaptureIndex": 1,
-      "completionSetNames": [
-        "keywords",
-        "keywords.declaration",
       ],
     },
     {
