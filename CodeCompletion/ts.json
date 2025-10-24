@@ -41,6 +41,8 @@
       "completionCaptureIndex": 1,
       "completionSetNames": [
         "functions",
+        "console.variables",
+        "console.functions",
         "dom.variables",
         "dom.window.methods.global",
       ],
@@ -121,13 +123,13 @@
         "dom.events",
       ],
     },
-    // DOM properties and methods
+    // DOM
     {
       "scope": "(source.ts|source.js) - comment - string",
       "pattern": "\\bconsole\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "dom.console.methods",
+        "console.methods",
       ],
     },
     {
@@ -321,179 +323,6 @@
           "string": "else if",
           "append": " ($1) {\n\t$0\n}",
         }],
-    },
-    {
-      "name": "native-objects",
-      "defaultAppend": "($1)",
-      "strings": [
-        "Array",
-        "Boolean",
-        "Date",
-        "Function",
-        "Number",
-        "Object",
-        "RegExp",
-        "String",
-        "Image",
-        "Node",
-      ],
-    },
-    {
-      "name": "native-errors",
-      "defaultAppend": "(${1:\"${2:message}\"}${3:, { cause: ${4:cause} \\}})",
-      "strings": [
-        "Error",
-        "EvalError",
-        "RangeError",
-        "ReferenceError",
-        "SyntaxError",
-        "TypeError",
-        "URIError",
-      ],
-    },
-    {
-      "name": "native-objects.static",
-      "strings": [
-        "Date",
-        "Math",
-        "Number",
-        "String",
-        "Node",
-      ],
-    },
-    {
-      "name": "native-objects.Date",
-      "defaultAppend": "()",
-      "strings": [
-        "now",
-        {
-          "string": "parse",
-          "append": "(${1:dateString})",
-        },
-        {
-          "string": "UTC",
-          "append": "(${1:yyyy}, ${2:mm}, ${3:dd}${4:, ${5:hh}, ${6:mm}, ${7:ss}, ${8:ms}})",
-        },
-      ],
-    },
-    {
-      "name": "native-objects.Math",
-      "strings": [
-        "E",
-        "LN2",
-        "LN10",
-        "LOG2E",
-        "LOG10E",
-        "PI",
-        "SQRT1_2",
-        "SQRT2",
-        {
-          "string": "abs",
-          "append": "(${1:number})",
-        },
-        {
-          "string": "acos",
-          "append": "(${1:number})",
-        },
-        {
-          "string": "asin",
-          "append": "(${1:number})",
-        },
-        {
-          "string": "atan",
-          "append": "(${1:number})",
-        },
-        {
-          "string": "atan2",
-          "append": "(${1:x}, ${2:y})",
-        },
-        {
-          "string": "ceil",
-          "append": "(${1:number})",
-        },
-        {
-          "string": "cos",
-          "append": "(${1:number})",
-        },
-        {
-          "string": "exp",
-          "append": "(${1:number})",
-        },
-        {
-          "string": "floor",
-          "append": "(${1:number})",
-        },
-        {
-          "string": "log",
-          "append": "(${1:number})",
-        },
-        {
-          "string": "max",
-          "append": "(${1:number1}, ${2:number2})",
-        },
-        {
-          "string": "min",
-          "append": "(${1:number1}, ${2:number2})",
-        },
-        {
-          "string": "pow",
-          "append": "(${1:number1}, ${2:number2})",
-        },
-        {
-          "string": "random",
-          "append": "()",
-        },
-        {
-          "string": "round",
-          "append": "(${1:number})",
-        },
-        {
-          "string": "sin",
-          "append": "(${1:number})",
-        },
-        {
-          "string": "sqrt",
-          "append": "(${1:number})",
-        },
-        {
-          "string": "tan",
-          "append": "(${1:number})",
-        },
-      ],
-    },
-    {
-      "name": "native-objects.Number",
-      "strings": [
-        "MAX_VALUE",
-        "MIN_VALUE",
-        "NEGATIVE_INFINITY",
-        "POSITIVE_INFINITY",
-      ],
-    },
-    {
-      "name": "native-objects.String",
-      "strings": [
-        {
-          "string": "fromCharCode",
-          "append": "(${1:num1}${2:, ${3:num2 ...}})",
-        }],
-    },
-    {
-      "name": "native-objects.Node",
-      "strings": [
-        "ATTRIBUTE_NODE",
-        "CDATA_SECTION_NODE",
-        "COMMENT_NODE",
-        "DOCUMENT_FRAGMENT_NODE",
-        "DOCUMENT_NODE",
-        "DOCUMENT_TYPE_NODE",
-        "ELEMENT_NODE",
-        "ENTITY_NODE",
-        "ENTITY_REFERENCE_NODE",
-        "NOTATION_NODE",
-        "PROCESSING_INSTRUCTION_NODE",
-        "TEXT_NODE",
-      ],
     },
     {
       "name": "functions",
@@ -775,12 +604,207 @@
         "toUpperCase",
       ],
     },
-    // DOM support
-    // DOM variables
+    {
+      "name": "console.variables",
+      "strings": [
+        "console",
+      ],
+    },
+    {
+      "name": "console.functions",
+      "defaultAppend": "(${1:string})",
+      "strings": [
+        "log",
+        "logWarning",
+        "logError",
+      ],
+    },
+    {
+      "name": "console.methods",
+      "defaultAppend": "(${1:string})",
+      "strings": [
+        "log",
+        "warn",
+        "error",
+      ],
+    },
+    {
+      "name": "native-objects",
+      "defaultAppend": "($1)",
+      "strings": [
+        "Array",
+        "Boolean",
+        "Date",
+        "Function",
+        "Number",
+        "Object",
+        "RegExp",
+        "String",
+        "Image",
+        "Node",
+      ],
+    },
+    {
+      "name": "native-errors",
+      "defaultAppend": "(${1:\"${2:message}\"}${3:, { cause: ${4:cause} \\}})",
+      "strings": [
+        "Error",
+        "EvalError",
+        "RangeError",
+        "ReferenceError",
+        "SyntaxError",
+        "TypeError",
+        "URIError",
+      ],
+    },
+    {
+      "name": "native-objects.static",
+      "strings": [
+        "Date",
+        "Math",
+        "Number",
+        "String",
+        "Node",
+      ],
+    },
+    {
+      "name": "native-objects.Date",
+      "defaultAppend": "()",
+      "strings": [
+        "now",
+        {
+          "string": "parse",
+          "append": "(${1:dateString})",
+        },
+        {
+          "string": "UTC",
+          "append": "(${1:yyyy}, ${2:mm}, ${3:dd}${4:, ${5:hh}, ${6:mm}, ${7:ss}, ${8:ms}})",
+        },
+      ],
+    },
+    {
+      "name": "native-objects.Math",
+      "strings": [
+        "E",
+        "LN2",
+        "LN10",
+        "LOG2E",
+        "LOG10E",
+        "PI",
+        "SQRT1_2",
+        "SQRT2",
+        {
+          "string": "abs",
+          "append": "(${1:number})",
+        },
+        {
+          "string": "acos",
+          "append": "(${1:number})",
+        },
+        {
+          "string": "asin",
+          "append": "(${1:number})",
+        },
+        {
+          "string": "atan",
+          "append": "(${1:number})",
+        },
+        {
+          "string": "atan2",
+          "append": "(${1:x}, ${2:y})",
+        },
+        {
+          "string": "ceil",
+          "append": "(${1:number})",
+        },
+        {
+          "string": "cos",
+          "append": "(${1:number})",
+        },
+        {
+          "string": "exp",
+          "append": "(${1:number})",
+        },
+        {
+          "string": "floor",
+          "append": "(${1:number})",
+        },
+        {
+          "string": "log",
+          "append": "(${1:number})",
+        },
+        {
+          "string": "max",
+          "append": "(${1:number1}, ${2:number2})",
+        },
+        {
+          "string": "min",
+          "append": "(${1:number1}, ${2:number2})",
+        },
+        {
+          "string": "pow",
+          "append": "(${1:number1}, ${2:number2})",
+        },
+        {
+          "string": "random",
+          "append": "()",
+        },
+        {
+          "string": "round",
+          "append": "(${1:number})",
+        },
+        {
+          "string": "sin",
+          "append": "(${1:number})",
+        },
+        {
+          "string": "sqrt",
+          "append": "(${1:number})",
+        },
+        {
+          "string": "tan",
+          "append": "(${1:number})",
+        },
+      ],
+    },
+    {
+      "name": "native-objects.Number",
+      "strings": [
+        "MAX_VALUE",
+        "MIN_VALUE",
+        "NEGATIVE_INFINITY",
+        "POSITIVE_INFINITY",
+      ],
+    },
+    {
+      "name": "native-objects.String",
+      "strings": [
+        {
+          "string": "fromCharCode",
+          "append": "(${1:num1}${2:, ${3:num2 ...}})",
+        }],
+    },
+    {
+      "name": "native-objects.Node",
+      "strings": [
+        "ATTRIBUTE_NODE",
+        "CDATA_SECTION_NODE",
+        "COMMENT_NODE",
+        "DOCUMENT_FRAGMENT_NODE",
+        "DOCUMENT_NODE",
+        "DOCUMENT_TYPE_NODE",
+        "ELEMENT_NODE",
+        "ENTITY_NODE",
+        "ENTITY_REFERENCE_NODE",
+        "NOTATION_NODE",
+        "PROCESSING_INSTRUCTION_NODE",
+        "TEXT_NODE",
+      ],
+    },
+    // DOM
     {
       "name": "dom.variables",
       "strings": [
-        "console",
         "document",
         "history",
         "localStorage",
@@ -792,7 +816,6 @@
         "parent",
       ],
     },
-    // DOM properties
     {
       "name": "dom.properties",
       "strings": [
@@ -834,7 +857,6 @@
         "title",
       ],
     },
-    // DOM methods
     {
       "name": "dom.methods",
       "defaultAppend": "()",
@@ -951,7 +973,6 @@
         "toString",
       ],
     },
-    // Event Strings
     {
       "name": "dom.events",
       "strings": [
@@ -976,17 +997,6 @@
         "unload",
       ],
     },
-    // console
-    {
-      "name": "dom.console.methods",
-      "defaultAppend": "($1)",
-      "strings": [
-        "log",
-        "warn",
-        "error",
-      ],
-    },
-    // Document
     {
       "name": "dom.document.properties",
       "strings": [
@@ -1099,7 +1109,6 @@
         },
       ],
     },
-    // History
     {
       "name": "dom.history.properties",
       "strings": [
@@ -1118,7 +1127,6 @@
         },
       ],
     },
-    // Location
     {
       "name": "dom.location.properties",
       "strings": [
@@ -1144,7 +1152,6 @@
           "append": "(${1:URL})",
         }],
     },
-    // Screen
     {
       "name": "dom.screen.properties",
       "strings": [
@@ -1158,7 +1165,6 @@
         "pixelDepth",
       ],
     },
-    // Window
     {
       "name": "dom.window.properties",
       "strings": [
