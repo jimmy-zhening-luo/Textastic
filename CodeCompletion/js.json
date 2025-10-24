@@ -424,10 +424,6 @@
         "getUTCSeconds",
         "getYear",
         {
-          "string": "parse",
-          "append": "(${1:dateString})",
-        },
-        {
           "string": "setDate",
           "append": "(${1:dateInteger})",
         },
