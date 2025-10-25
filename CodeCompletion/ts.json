@@ -9,6 +9,14 @@
       "completionSetNames": [
         "keywords",
         "keywords.declaration",
+        "keywords.operators",
+        "this",
+        "functions",
+        "values",
+        "console",
+        "console.functions",
+        "dom.variables",
+        // "dom.window.methods.global",
       ],
     },
     {
@@ -16,7 +24,7 @@
       "pattern": "(?<!\\.)\\b([a-zA-Z]+)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "keywords.type",
+        "keywords.typed",
       ],
     },
     {
@@ -37,25 +45,13 @@
     },
     {
       "scope": "(source.ts|source.js) - comment - string",
-      "pattern": "(?<!\\.)\\b([a-zA-Z]+)",
-      "completionCaptureIndex": 1,
-      "completionSetNames": [
-        "functions",
-        "console.variables",
-        "console.functions",
-        "dom.variables",
-        "dom.window.methods.global",
-      ],
-    },
-    {
-      "scope": "(source.ts|source.js) - comment - string",
       "pattern": "\\.([a-zA-Z][a-zA-Z ]*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
         "properties",
         "methods",
-        "dom.properties",
-        "dom.methods",
+        // "dom.properties",
+        // "dom.methods",
       ],
     },
     {
@@ -72,31 +68,8 @@
       "pattern": "(?<!new )\\b([A-Z][a-zA-Z]*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "native-objects.static",
-      ],
-    },
-    {
-      "scope": "(source.ts|source.js) - comment - string",
-      "pattern": "\\bDate\\.(\\w*)",
-      "completionCaptureIndex": 1,
-      "completionSetNames": [
-        "native-objects.Date",
-      ],
-    },
-    {
-      "scope": "(source.ts|source.js) - comment - string",
-      "pattern": "\\bMath\\.(\\w*)",
-      "completionCaptureIndex": 1,
-      "completionSetNames": [
-        "native-objects.Math",
-      ],
-    },
-    {
-      "scope": "(source.ts|source.js) - comment - string",
-      "pattern": "\\bNumber\\.(\\w*)",
-      "completionCaptureIndex": 1,
-      "completionSetNames": [
-        "native-objects.Number",
+        "native-static-objects",
+        "native-errors",
       ],
     },
     {
@@ -109,12 +82,39 @@
     },
     {
       "scope": "(source.ts|source.js) - comment - string",
+      "pattern": "\\bNumber\\.(\\w*)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "native-objects.Number",
+      ],
+    },
+    {
+      "scope": "(source.ts|source.js) - comment - string",
+      "pattern": "\\bMath\\.(\\w*)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "native-objects.Math",
+        "native-objects.Math.methods",
+      ],
+    },
+    {
+      "scope": "(source.ts|source.js) - comment - string",
+      "pattern": "\\bDate\\.(\\w*)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "native-objects.Date",
+      ],
+    },
+    // Node
+    {
+      "scope": "(source.ts|source.js) - comment - string",
       "pattern": "\\bNode\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
         "native-objects.Node",
       ],
     },
+    // DOM
     {
       "scope": "(source.ts|source.js) string",
       "pattern": "\\b(?:addEventListener|removeEventListener)\\s*\\(\\s*['\"]([a-zA-Z]*)",
@@ -123,7 +123,6 @@
         "dom.events",
       ],
     },
-    // DOM
     {
       "scope": "(source.ts|source.js) - comment - string",
       "pattern": "\\bconsole\\.(\\w*)",
@@ -189,28 +188,13 @@
   "completionSets": [
     {
       "name": "keywords",
-      "defaultAppend": "",
+      "defaultAppend": " ",
       "strings": [
-        {
-          "string": "function",
-          "append": " ${1:name}($2) {\n\t$0\n}",
-        },
         "new",
         "delete",
-        "class",
         "extends",
-        "super",
-        "this",
-        "instanceof",
-        "typeof",
         "import",
         "export",
-        "Infinity",
-        "undefined",
-        "NaN",
-        "true",
-        "false",
-        "null",
       ],
     },
     {
@@ -220,16 +204,33 @@
         "const",
         "let",
         "var",
+        {
+          "string": "class",
+          "append": " ${1:Name} {\n\t$0\n}",
+        },
+        {
+          "string": "function",
+          "append": " ${1:name}($2) {\n\t$0\n}",
+        },
       ],
     },
     {
-      "name": "keywords.type",
-      "defaultAppend": "",
+      "name": "keywords.operators",
+      "defaultAppend": " ",
       "strings": [
-        "readonly",
+        "in",
+        "instanceof",
+        "typeof",
+      ],
+    },
+    {
+      "name": "keywords.typed",
+      "defaultAppend": " ",
+      "strings": [
         "public",
         "protected",
         "private",
+        "readonly",
         "abstract",
         "override",
         "implements",
@@ -238,8 +239,6 @@
         "satisfies",
         "as",
         "keyof",
-        "never",
-        "unknown",
         "declare",
       ],
     },
@@ -311,9 +310,10 @@
           "string": "with",
           "append": " ($1)  {\n\t$0\n}",
         },
-        "in",
         "return",
         "void",
+        "async",
+        "await",
       ],
     },
     {
@@ -322,7 +322,15 @@
         {
           "string": "else if",
           "append": " ($1) {\n\t$0\n}",
-        }],
+        },
+      ],
+    },
+    {
+      "name": "this",
+      "strings": [
+        "this",
+        "super",
+      ],
     },
     {
       "name": "functions",
@@ -338,22 +346,45 @@
         },
         "encodeURI",
         "encodeURIComponent",
-        "escape",
         "eval",
+      ],
+    },
+    {
+      "name": "values",
+      "strings": [
+        "undefined",
+        "null",
+        "true",
+        "false",
+        "Infinity",
+        "NaN",
+      ],
+    },
+    {
+      "name": "types",
+      "strings": [
+        "string",
+        "number",
+        "boolean",
+        "symbol",
+        "object",
+        "symbol",
+        "bigint",
+        "undefined",
+      ],
+    },
+    {
+      "name": "types.predicates",
+      "strings": [
+        "any",
+        "unknown",
+        "null",
+        "void",
+        "never",
         {
-          "string": "isFinite",
-          "append": "(${1:expression})",
+          "string": "Record",
+          "append": "<${1:K}, ${2:V}>",
         },
-        {
-          "string": "isNaN",
-          "append": "(${1:expression})",
-        },
-        {
-          "string": "parseInt",
-          "append": "(${1:string}${2:, ${3:base}})",
-        },
-        "parseFloat",
-        "unescape",
       ],
     },
     {
@@ -605,7 +636,7 @@
       ],
     },
     {
-      "name": "console.variables",
+      "name": "console",
       "strings": [
         "console",
       ],
@@ -629,6 +660,23 @@
       ],
     },
     {
+      "name": "native-static-objects",
+      "strings": [
+        "Math",
+        "Array",
+        "Boolean",
+        "Date",
+        "Function",
+        "Map",
+        "Number",
+        "Object",
+        "RegExp",
+        "Set",
+        "String",
+        "Symbol",
+      ],
+    },
+    {
       "name": "native-objects",
       "defaultAppend": "($1)",
       "strings": [
@@ -636,12 +684,13 @@
         "Boolean",
         "Date",
         "Function",
+        "Map",
         "Number",
         "Object",
         "RegExp",
+        "Set",
         "String",
-        "Image",
-        "Node",
+        "Symbol",
       ],
     },
     {
@@ -658,13 +707,136 @@
       ],
     },
     {
-      "name": "native-objects.static",
+      "name": "native-objects.String",
       "strings": [
-        "Date",
-        "Math",
-        "Number",
-        "String",
-        "Node",
+        {
+          "string": "fromCharCode",
+          "append": "(${1:number1}${2:, ${3:number2 ...}})",
+        },
+        {
+          "string": "fromCodePoint",
+          "append": "(${1:number1}${2:, ${3:number2 ...}})",
+        },
+        {
+          "string": "raw",
+          "append": "(${1:strings}${2:, ${3:substring1 ...}})",
+        },
+      ],
+    },
+    {
+      "name": "native-objects.Number",
+      "strings": [
+        "EPSILON",
+        "MAX_SAFE_INTEGER",
+        "MAX_VALUE",
+        "MIN_SAFE_INTEGER",
+        "MIN_VALUE",
+        "NaN",
+        "NEGATIVE_INFINITY",
+        "POSITIVE_INFINITY",
+        {
+          "string": "isFinite",
+          "append": "(${1:value})",
+        },
+        {
+          "string": "isInteger",
+          "append": "(${1:value})",
+        },
+        {
+          "string": "isNaN",
+          "append": "(${1:value})",
+        },
+        {
+          "string": "isSafeInteger",
+          "append": "(${1:value})",
+        },
+        {
+          "string": "parseFloat",
+          "append": "(${1:string})",
+        },
+        {
+          "string": "parseInt",
+          "append": "(${1:string}${2:, ${3:radix}})",
+        },
+      ],
+    },
+    {
+      "name": "native-objects.Math",
+      "strings": [
+        "E",
+        "LN2",
+        "LN10",
+        "LOG2E",
+        "LOG10E",
+        "PI",
+        "SQRT1_2",
+        "SQRT2",
+      ],
+    },
+    {
+      "name": "native-objects.Math.methods",
+      "defaultAppend": "(${1:number})",
+      "strings": [
+        "abs",
+        "acos",
+        "acosh",
+        "asin",
+        "asinh",
+        "atan",
+        {
+          "string": "atan2",
+          "append": "(${1:x}, ${2:y})",
+        },
+        "atanh",
+        "cbrt",
+        "ceil",
+        "clz32",
+        "cos",
+        "cosh",
+        "exp",
+        "expm1",
+        "floor",
+        "fround",
+        {
+          "string": "hypot",
+          "append": "(${1:number1}${2:, ${3:number2 ...}})",
+        },
+        {
+          "string": "imul",
+          "append": "(${1:a}, ${2:b})",
+        },
+        "log",
+        "log1p",
+        "log2",
+        "log10",
+        {
+          "string": "max",
+          "append": "(${1:number1}, ${2:number2})",
+        },
+        {
+          "string": "min",
+          "append": "(${1:number1}, ${2:number2})",
+        },
+        {
+          "string": "pow",
+          "append": "(${1:number1}, ${2:number2})",
+        },
+        {
+          "string": "random",
+          "append": "()",
+        },
+        "round",
+        "sign",
+        "sin",
+        "sinh",
+        "sqrt",
+        {
+          "string": "sumPrecise",
+          "append": "(${1:numbers})",
+        },
+        "tan",
+        "tanh",
+        "trunc",
       ],
     },
     {
@@ -682,108 +854,7 @@
         },
       ],
     },
-    {
-      "name": "native-objects.Math",
-      "strings": [
-        "E",
-        "LN2",
-        "LN10",
-        "LOG2E",
-        "LOG10E",
-        "PI",
-        "SQRT1_2",
-        "SQRT2",
-        {
-          "string": "abs",
-          "append": "(${1:number})",
-        },
-        {
-          "string": "acos",
-          "append": "(${1:number})",
-        },
-        {
-          "string": "asin",
-          "append": "(${1:number})",
-        },
-        {
-          "string": "atan",
-          "append": "(${1:number})",
-        },
-        {
-          "string": "atan2",
-          "append": "(${1:x}, ${2:y})",
-        },
-        {
-          "string": "ceil",
-          "append": "(${1:number})",
-        },
-        {
-          "string": "cos",
-          "append": "(${1:number})",
-        },
-        {
-          "string": "exp",
-          "append": "(${1:number})",
-        },
-        {
-          "string": "floor",
-          "append": "(${1:number})",
-        },
-        {
-          "string": "log",
-          "append": "(${1:number})",
-        },
-        {
-          "string": "max",
-          "append": "(${1:number1}, ${2:number2})",
-        },
-        {
-          "string": "min",
-          "append": "(${1:number1}, ${2:number2})",
-        },
-        {
-          "string": "pow",
-          "append": "(${1:number1}, ${2:number2})",
-        },
-        {
-          "string": "random",
-          "append": "()",
-        },
-        {
-          "string": "round",
-          "append": "(${1:number})",
-        },
-        {
-          "string": "sin",
-          "append": "(${1:number})",
-        },
-        {
-          "string": "sqrt",
-          "append": "(${1:number})",
-        },
-        {
-          "string": "tan",
-          "append": "(${1:number})",
-        },
-      ],
-    },
-    {
-      "name": "native-objects.Number",
-      "strings": [
-        "MAX_VALUE",
-        "MIN_VALUE",
-        "NEGATIVE_INFINITY",
-        "POSITIVE_INFINITY",
-      ],
-    },
-    {
-      "name": "native-objects.String",
-      "strings": [
-        {
-          "string": "fromCharCode",
-          "append": "(${1:num1}${2:, ${3:num2 ...}})",
-        }],
-    },
+    // Node
     {
       "name": "native-objects.Node",
       "strings": [
@@ -1150,7 +1221,8 @@
         {
           "string": "replace",
           "append": "(${1:URL})",
-        }],
+        },
+      ],
     },
     {
       "name": "dom.screen.properties",
@@ -1227,7 +1299,8 @@
         {
           "string": "setTimeout",
           "append": "(${1:functionReference}, ${2:milliseconds})",
-        }],
+        },
+      ],
     },
     {
       "name": "dom.window.methods",
@@ -1292,7 +1365,8 @@
         {
           "string": "clear",
           "append": "()",
-        }],
+        },
+      ],
     },
   ],
 }
