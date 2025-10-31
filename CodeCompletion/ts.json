@@ -206,11 +206,15 @@
         "var",
         {
           "string": "class",
-          "append": " ${1:Name} {\n\t$0\n}",
+          "append": " ${1:Name} ${2:extends ${3:Parent} }{\n\t$0\n}",
         },
         {
           "string": "function",
           "append": " ${1:name}($2) {\n\t$0\n}",
+        },
+        {
+          "string": "constructor",
+          "append": "($1) {\n\t$0\n}",
         },
       ],
     },
@@ -298,18 +302,15 @@
           "string": "throw",
           "append": " ${1:Error}",
         },
-        {
-          "string": "do",
-          "append": " {\n\t$0\n} while ($1);",
-        },
+        // {
+        //  "string": "do",
+        //  "append": " {\n\t$0\n} while ($1);",
+        // },
         {
           "string": "while",
           "append": " (${1:condition}){\n\t$2\n}",
         },
-        {
-          "string": "with",
-          "append": " ($1)  {\n\t$0\n}",
-        },
+        // "with",
         "return",
         "void",
         "async",
@@ -346,7 +347,7 @@
         },
         "encodeURI",
         "encodeURIComponent",
-        "eval",
+        // "eval",
       ],
     },
     {
