@@ -296,7 +296,7 @@
         },
         {
           "string": "throw",
-          "append": " ${1:new ${2:Error}}",
+          "append": " ${1:Error}",
         },
         {
           "string": "do",
@@ -304,7 +304,7 @@
         },
         {
           "string": "while",
-          "append": " (${1:?}){\n\t$2\n}",
+          "append": " (${1:condition}){\n\t$2\n}",
         },
         {
           "string": "with",
