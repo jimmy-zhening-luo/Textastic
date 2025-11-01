@@ -76,6 +76,14 @@
     },
     {
       "scope": "(source.ts|source.js) - comment - string",
+      "pattern": "\\bthrow\\s+([a-zA-Z]*)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "native-errors",
+      ],
+    },
+    {
+      "scope": "(source.ts|source.js) - comment - string",
       "pattern": "\\bString\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
@@ -313,7 +321,7 @@
         },
         {
           "string": "throw",
-          "append": " ${1:Error}",
+          "append": "",
         },
         // {
         //  "string": "do",
