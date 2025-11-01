@@ -8,6 +8,7 @@
       "completionCaptureIndex": 1,
       "completionSetNames": [
         "keywords",
+        "keywords.new",
         "keywords.declaration",
         "keywords.operators",
         "this",
@@ -25,6 +26,7 @@
       "completionCaptureIndex": 1,
       "completionSetNames": [
         "keywords.typed",
+        "keywords.typed.visibility",
       ],
     },
     {
@@ -190,11 +192,16 @@
       "name": "keywords",
       "defaultAppend": " ",
       "strings": [
-        "new",
         "delete",
         "extends",
         "import",
         "export",
+      ],
+    },
+    {
+      "name": "keywords.new",
+      "strings": [
+        "new",
       ],
     },
     {
@@ -231,9 +238,6 @@
       "name": "keywords.typed",
       "defaultAppend": " ",
       "strings": [
-        "public",
-        "protected",
-        "private",
         "readonly",
         "abstract",
         "override",
@@ -244,6 +248,15 @@
         "as",
         "keyof",
         "declare",
+      ],
+    },
+    {
+      "name": "keywords.typed.visibility",
+      "defaultAppend": " ",
+      "strings": [
+        "public",
+        "protected",
+        "private",
       ],
     },
     {
