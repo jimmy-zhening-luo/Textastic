@@ -3,6 +3,11 @@
   "category": "Code",
   "templates": [
     {
+      "name": "Mocha",
+      "fileExtension": "spec.ts",
+      "snippet": "import \"chai/register-should.js\";\n\ndescribe(\n\t\"${1:Suite}\",\n\tfunction () {\n\t\tdescribe(\n\t\t\t\"${2:Case}\",\n\t\t\tfunction () {\n\t\t\t\tit(\n\t\t\t\t\t\"${3:assertion}\",\n\t\t\t\t\tfunction () {\n\t\t\t\t\t\t$0\n\t\t\t\t\t},\n\t\t\t\t);\n\t\t\t},\n\t\t);\n\t},\n);\n"
+    },
+    {
       "name": "Scriptable",
       "fileExtension": "ts",
       "snippet": "// icon-color: ${1:deep-gray}; icon-glyph: ${2:pen};\nimport ${3:Shortcut} from \"./app${4:/${5:widget}}\";\n\n${6:${7:await} }new class ${8:Script} extends $3 {\n\tprotected ${9:${10:async} }runtime() {\n\t\t$0\n\t}\n}().run();\n"
