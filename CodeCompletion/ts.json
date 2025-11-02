@@ -559,14 +559,14 @@
         "toTimeString",
         "toUTCString",
         // Function
-        {
-          "string": "apply",
-          "append": "(${1:${2:thisOjbect}, ${3:argumentsArray}})",
-        },
-        {
-          "string": "call",
-          "append": "(${1:${2:thisObject}${3:, ${4:arg1, ...}}})",
-        },
+        // {
+        //   "string": "apply",
+        //   "append": "(${1:${2:thisOjbect}, ${3:argumentsArray}})",
+        // },
+        // {
+        //   "string": "call",
+        //   "append": "(${1:${2:thisObject}${3:, ${4:arg1, ...}}})",
+        // },
         // Number
         {
           "string": "toExponential",
