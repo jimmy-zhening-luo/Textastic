@@ -8,11 +8,6 @@
 	<string>source.ts</string>
 	<key>settings</key>
 	<dict>
-		<key>bracketIndentNextLinePattern</key>
-		<string>(?x)
-  ^ \s* \b(if|while|else)\b [^;]* $
-  | ^ \s* \b(for)\b .* $
-</string>
 		<key>decreaseIndentPattern</key>
 		<string>^(.*\*/)?\s*[\]})].*$</string>
 		<key>increaseIndentPattern</key>
