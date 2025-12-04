@@ -7,17 +7,10 @@
       "pattern": "(?<!\\.)\\b([a-zA-Z]+)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "keywords",
-        "keywords.new",
-        "keywords.declaration",
-        "keywords.operators",
-        "this",
-        "functions",
-        "values",
-        "console",
-        "console.functions",
-        "dom.variables",
-        // "dom.window.methods.global",
+        "keyword",
+        "keyword.new",
+        "keyword.declaration",
+        "keyword.operator",
       ],
     },
     {
@@ -25,8 +18,8 @@
       "pattern": "(?<!\\.)\\b([a-zA-Z]+)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "keywords.typed",
-        "keywords.typed.visibility",
+        "keyword-typed",
+        "keyword-typed.visibility",
       ],
     },
     {
@@ -34,7 +27,7 @@
       "pattern": "(?<!\\.|\\[|\\(|,)\\b([a-zA-Z]+)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "keywords.control",
+        "control",
       ],
     },
     {
@@ -42,27 +35,21 @@
       "pattern": "(?<!\\.|\\[|\\(|,)\\b(e[lse if]*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "keywords.control.else-if",
+        "control.elseif",
       ],
     },
     {
       "scope": "(source.ts|source.js) - comment - string",
-      "pattern": "\\.([a-zA-Z][a-zA-Z ]*)",
+      "pattern": "(?<!\\.)\\b([a-zA-Z]+)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "properties",
-        "methods",
-        // "dom.properties",
-        // "dom.methods",
-      ],
-    },
-    {
-      "scope": "(source.ts|source.js) - comment - string",
-      "pattern": "\\bnew\\s+([a-zA-Z]*)",
-      "completionCaptureIndex": 1,
-      "completionSetNames": [
-        "native-objects",
-        "native-errors",
+        "global",
+        "global.this",
+        "global.console",
+        // "global.dom",
+        "global-method",
+        "global-method.console",
+        // "global-method.dom",
       ],
     },
     {
@@ -70,8 +57,18 @@
       "pattern": "(?<!new )\\b([A-Z][a-zA-Z]*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "native-static-objects",
-        "native-errors",
+        "static",
+        "newable",
+        "newable.Error",
+      ],
+    },
+    {
+      "scope": "(source.ts|source.js) - comment - string",
+      "pattern": "\\bnew\\s+([a-zA-Z]*)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "newable",
+        "newable.Error",
       ],
     },
     {
@@ -79,7 +76,18 @@
       "pattern": "\\bthrow\\s+([a-zA-Z]*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "native-errors",
+        "newable.Error",
+      ],
+    },
+    {
+      "scope": "(source.ts|source.js) - comment - string",
+      "pattern": "\\.([a-zA-Z][a-zA-Z ]*)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "instance.property",
+        "instance.method",
+        // "dom-interface.property",
+        // "dom-interface.method",
       ],
     },
     {
@@ -87,7 +95,7 @@
       "pattern": "\\bString\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "native-objects.String",
+        "static.String",
       ],
     },
     {
@@ -95,7 +103,8 @@
       "pattern": "\\bNumber\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "native-objects.Number",
+        "static.Number",
+        "static.Number.method",
       ],
     },
     {
@@ -103,8 +112,8 @@
       "pattern": "\\bMath\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "native-objects.Math",
-        "native-objects.Math.methods",
+        "static.Math",
+        "static.Math.method",
       ],
     },
     {
@@ -112,33 +121,43 @@
       "pattern": "\\bDate\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "native-objects.Date",
+        "static.Date",
       ],
     },
-    // Node
     {
       "scope": "(source.ts|source.js) - comment - string",
       "pattern": "\\bNode\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "native-objects.Node",
+        "static.Node",
       ],
     },
-    // DOM
-    {
-      "scope": "(source.ts|source.js) string",
-      "pattern": "\\b(?:addEventListener|removeEventListener)\\s*\\(\\s*['\"]([a-zA-Z]*)",
-      "completionCaptureIndex": 1,
-      "completionSetNames": [
-        "dom.events",
-      ],
-    },
+    // console
     {
       "scope": "(source.ts|source.js) - comment - string",
       "pattern": "\\bconsole\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "console.methods",
+        "console.method",
+      ],
+    },
+    // DOM
+    {
+      "scope": "(source.ts|source.js) - comment - string",
+      "pattern": "\\b(window|opener|parent|self|top)\\.(\\w*)",
+      "completionCaptureIndex": 2,
+      "completionSetNames": [
+        "dom.interface.window",
+        "dom.interface.window.method",
+        "global-method.dom",
+      ],
+    },
+    {
+      "scope": "(source.ts|source.js) string",
+      "pattern": "\\b(?:addEventListener|removeEventListener)\\s*\\(\\s*['\"]([a-zA-Z]*)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "dom.interface.event",
       ],
     },
     {
@@ -146,8 +165,8 @@
       "pattern": "\\bdocument\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "dom.document.properties",
-        "dom.document.methods",
+        "dom.interface.document",
+        "dom.interface.document.method",
       ],
     },
     {
@@ -155,8 +174,8 @@
       "pattern": "\\bhistory\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "dom.history.properties",
-        "dom.history.methods",
+        "dom.interface.history",
+        "dom.interface.history.method",
       ],
     },
     {
@@ -164,8 +183,8 @@
       "pattern": "\\blocation\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "dom.location.properties",
-        "dom.location.methods",
+        "dom.interface.location",
+        "dom.interface.location.method",
       ],
     },
     {
@@ -173,7 +192,7 @@
       "pattern": "\\bscreen\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "dom.screen.properties",
+        "dom.interface.screen",
       ],
     },
     {
@@ -181,24 +200,13 @@
       "pattern": "\\blocalStorage\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
-        "dom.localStorage.methods",
-      ],
-    },
-    {
-      "scope": "(source.ts|source.js) - comment - string",
-      "pattern": "\\b(window|opener|parent|self|top)\\.(\\w*)",
-      "completionCaptureIndex": 2,
-      "completionSetNames": [
-        "dom.window.properties",
-        "dom.window.methods",
-        "dom.window.methods.global",
+        "dom.interface.localStorage.method",
       ],
     },
   ],
   "completionSets": [
     {
-      "name": "keywords",
-      "defaultAppend": " ",
+      "name": "keyword",
       "strings": [
         "delete",
         "extends",
@@ -207,13 +215,13 @@
       ],
     },
     {
-      "name": "keywords.new",
+      "name": "keyword.new",
       "strings": [
         "new",
       ],
     },
     {
-      "name": "keywords.declaration",
+      "name": "keyword.declaration",
       "defaultAppend": " ${1:name} = ",
       "strings": [
         "const",
@@ -231,11 +239,14 @@
           "string": "constructor",
           "append": "($1) {\n\t$0\n}",
         },
+        {
+          "string": "static",
+          "append": " ",
+        },
       ],
     },
     {
-      "name": "keywords.operators",
-      "defaultAppend": " ",
+      "name": "keyword.operator",
       "strings": [
         "in",
         "instanceof",
@@ -243,8 +254,7 @@
       ],
     },
     {
-      "name": "keywords.typed",
-      "defaultAppend": " ",
+      "name": "keyword-typed",
       "strings": [
         "readonly",
         "abstract",
@@ -259,7 +269,7 @@
       ],
     },
     {
-      "name": "keywords.typed.visibility",
+      "name": "keyword-typed.visibility",
       "defaultAppend": " ",
       "strings": [
         "public",
@@ -268,9 +278,13 @@
       ],
     },
     {
-      "name": "keywords.control",
+      "name": "control",
       "defaultAppend": " ",
       "strings": [
+        "async",
+        "await",
+        "void",
+        "return",
         {
           "string": "continue",
           "append": ";",
@@ -323,23 +337,19 @@
           "string": "throw",
           "append": "",
         },
-        // {
-        //  "string": "do",
-        //  "append": " {\n\t$0\n} while ($1);",
-        // },
         {
           "string": "while",
           "append": " (${1:condition}){\n\t$2\n}",
         },
+        // {
+        //  "string": "do",
+        //  "append": " {\n\t$0\n} while ($1);",
+        // },
         // "with",
-        "return",
-        "void",
-        "async",
-        "await",
       ],
     },
     {
-      "name": "keywords.control.else-if",
+      "name": "control.elseif",
       "strings": [
         {
           "string": "else if",
@@ -348,42 +358,7 @@
       ],
     },
     {
-      "name": "this",
-      "strings": [
-        "this",
-        "super",
-      ],
-    },
-    {
-      "name": "functions",
-      "defaultAppend": "(${1:string})",
-      "strings": [
-        {
-          "string": "decodeURI",
-          "append": "(${1:encodedURI})",
-        },
-        {
-          "string": "decodeURIComponent",
-          "append": "(${1:encodedURIComponent})",
-        },
-        "encodeURI",
-        "encodeURIComponent",
-        // "eval",
-      ],
-    },
-    {
-      "name": "values",
-      "strings": [
-        "undefined",
-        "null",
-        "true",
-        "false",
-        "Infinity",
-        "NaN",
-      ],
-    },
-    {
-      "name": "types",
+      "name": "type",
       "strings": [
         "string",
         "number",
@@ -396,21 +371,181 @@
       ],
     },
     {
-      "name": "types.predicates",
+      "name": "type.predicate",
       "strings": [
         "any",
         "unknown",
         "null",
         "void",
         "never",
+      ],
+    },
+    {
+      "name": "type.utility",
+      "defaultAppend": "${1:<${2:T}>}",
+      "strings": [
+        "Awaited",
+        "Partial",
+        "Required",
+        "Readonly",
         {
           "string": "Record",
-          "append": "<${1:K}, ${2:V}>",
+          "append": "${1:<${2:K}, ${3:V}>}",
+        },
+        {
+          "string": "Pick",
+          "append": "${1:<${2:T}, ${3:K}>}",
+        },
+        {
+          "string": "Omit",
+          "append": "${1:<${2:T}, ${3:K}>}",
+        },
+        {
+          "string": "Exclude",
+          "append": "${1:<${2:U}, ${3:X}>}",
+        },
+        {
+          "string": "Extract",
+          "append": "${1:<${2:T}, ${3:U}>}",
+        },
+        "NonNullable",
+        "Parameters",
+        "ConstructorParameters",
+        "ReturnType",
+        "InstanceType",
+        "NoInfer",
+        "ThisParameterType",
+        "OmitThisParameter",
+        "ThisType",
+        "Uppercase",
+        "Lowercase",
+        "Capitalize",
+        "Uncapitalize",
+      ],
+    },
+    {
+      "name": "global",
+      "strings": [
+        "undefined",
+        "null",
+        "true",
+        "false",
+        "Infinity",
+        "NaN",
+      ],
+    },
+    {
+      "name": "global.this",
+      "defaultAppend": ".",
+      "strings": [
+        "this",
+        {
+          "string": "super",
+          "append": "${1:(${2:arg})}",
         },
       ],
     },
     {
-      "name": "properties",
+      "name": "global.console",
+      "defaultAppend": ".",
+      "strings": [
+        "console",
+      ],
+    },
+    {
+      "name": "global.dom",
+      "strings": [
+        "document",
+        "history",
+        "localStorage",
+        "location",
+        "screen",
+        "window",
+        "self",
+        "top",
+        "parent",
+      ],
+    },
+    {
+      "name": "global-method",
+      "defaultAppend": "(${1:string})",
+      "strings": [
+        "decodeURI",
+        "decodeURI",
+        "encodeURI",
+        "encodeURIComponent",
+        "eval",
+      ],
+    },
+    {
+      "name": "global-method.console",
+      "defaultAppend": "(${1:string})",
+      "strings": [
+        "log",
+        "logWarning",
+        "logError",
+      ],
+    },
+    {
+      "name": "global-method.dom",
+      "defaultAppend": "(${1:arg})",
+      "strings": [
+        "alert",
+        "clearInterval",
+        "clearTimeout",
+        "confirm",
+        {
+          "string": "prompt",
+          "append": "(${1:message}, ${2:defaultReply})",
+        },
+        {
+          "string": "setInterval",
+          "append": "(${1:functionReference}, ${2:milliseconds})",
+        },
+        {
+          "string": "setTimeout",
+          "append": "(${1:functionReference}, ${2:milliseconds})",
+        },
+      ],
+    },
+    {
+      "name": "static",
+      "strings": [
+        "Math",
+      ],
+    },
+    {
+      "name": "newable",
+      "defaultAppend": "($1)",
+      "strings": [
+        "Array",
+        "Boolean",
+        "Date",
+        "Function",
+        "Map",
+        "Number",
+        "Object",
+        "RegExp",
+        "Set",
+        "String",
+        "Symbol",
+      ],
+    },
+    {
+      "name": "newable.Error",
+      "defaultAppend": "(${2:\"${3:message}\"}${4:, { cause: ${5:cause} \\}})",
+      "strings": [
+        "Error",
+        "EvalError",
+        "RangeError",
+        "ReferenceError",
+        "SyntaxError",
+        "TypeError",
+        "URIError",
+      ],
+    },
+    {
+      "name": "instance.property",
       "strings": [
         // common
         "constructor",
@@ -421,15 +556,15 @@
         // Function
         "caller",
         // RegExp
-        "global",
-        "ignoreCase",
-        "lastIndex",
-        "multiline",
-        "source",
+        // "global",
+        // "ignoreCase",
+        // "lastIndex",
+        // "multiline",
+        // "source",
       ],
     },
     {
-      "name": "methods",
+      "name": "instance.method",
       "defaultAppend": "()",
       "strings": [
         // common
@@ -559,14 +694,14 @@
         "toTimeString",
         "toUTCString",
         // Function
-        // {
-        //   "string": "apply",
-        //   "append": "(${1:${2:thisOjbect}, ${3:argumentsArray}})",
-        // },
-        // {
-        //   "string": "call",
-        //   "append": "(${1:${2:thisObject}${3:, ${4:arg1, ...}}})",
-        // },
+        {
+          "string": "apply",
+          "append": "(${1:${2:thisOjbect}, ${3:argumentsArray}})",
+        },
+        {
+          "string": "call",
+          "append": "(${1:${2:thisObject}${3:, ${4:arg1, ...}}})",
+        },
         // Number
         {
           "string": "toExponential",
@@ -658,22 +793,7 @@
       ],
     },
     {
-      "name": "console",
-      "strings": [
-        "console",
-      ],
-    },
-    {
-      "name": "console.functions",
-      "defaultAppend": "(${1:string})",
-      "strings": [
-        "log",
-        "logWarning",
-        "logError",
-      ],
-    },
-    {
-      "name": "console.methods",
+      "name": "console.method",
       "defaultAppend": "(${1:string})",
       "strings": [
         "log",
@@ -682,71 +802,16 @@
       ],
     },
     {
-      "name": "native-static-objects",
+      "name": "static.String",
+      "defaultAppend": "(${1:arg}${2:, ${3:arg2 ...}})",
       "strings": [
-        "Math",
-        "Array",
-        "Boolean",
-        "Date",
-        "Function",
-        "Map",
-        "Number",
-        "Object",
-        "RegExp",
-        "Set",
-        "String",
-        "Symbol",
+        "fromCharCode",
+        "fromCodePoint",
+        "raw",
       ],
     },
     {
-      "name": "native-objects",
-      "defaultAppend": "($1)",
-      "strings": [
-        "Array",
-        "Boolean",
-        "Date",
-        "Function",
-        "Map",
-        "Number",
-        "Object",
-        "RegExp",
-        "Set",
-        "String",
-        "Symbol",
-      ],
-    },
-    {
-      "name": "native-errors",
-      "defaultAppend": "(${1:\"${2:message}\"}${3:, { cause: ${4:cause} \\}})",
-      "strings": [
-        "Error",
-        "EvalError",
-        "RangeError",
-        "ReferenceError",
-        "SyntaxError",
-        "TypeError",
-        "URIError",
-      ],
-    },
-    {
-      "name": "native-objects.String",
-      "strings": [
-        {
-          "string": "fromCharCode",
-          "append": "(${1:number1}${2:, ${3:number2 ...}})",
-        },
-        {
-          "string": "fromCodePoint",
-          "append": "(${1:number1}${2:, ${3:number2 ...}})",
-        },
-        {
-          "string": "raw",
-          "append": "(${1:strings}${2:, ${3:substring1 ...}})",
-        },
-      ],
-    },
-    {
-      "name": "native-objects.Number",
+      "name": "static.Number",
       "strings": [
         "EPSILON",
         "MAX_SAFE_INTEGER",
@@ -756,26 +821,17 @@
         "NaN",
         "NEGATIVE_INFINITY",
         "POSITIVE_INFINITY",
-        {
-          "string": "isFinite",
-          "append": "(${1:value})",
-        },
-        {
-          "string": "isInteger",
-          "append": "(${1:value})",
-        },
-        {
-          "string": "isNaN",
-          "append": "(${1:value})",
-        },
-        {
-          "string": "isSafeInteger",
-          "append": "(${1:value})",
-        },
-        {
-          "string": "parseFloat",
-          "append": "(${1:string})",
-        },
+      ],
+    },
+    {
+      "name": "static.Number.method",
+      "defaultAppend": "(${1:value})",
+      "strings": [
+        "isFinite",
+        "isInteger",
+        "isNaN",
+        "isSafeInteger",
+        "parseFloat",
         {
           "string": "parseInt",
           "append": "(${1:string}${2:, ${3:radix}})",
@@ -783,7 +839,7 @@
       ],
     },
     {
-      "name": "native-objects.Math",
+      "name": "static.Math",
       "strings": [
         "E",
         "LN2",
@@ -796,7 +852,7 @@
       ],
     },
     {
-      "name": "native-objects.Math.methods",
+      "name": "static.Math.method",
       "defaultAppend": "(${1:number})",
       "strings": [
         "abs",
@@ -862,7 +918,7 @@
       ],
     },
     {
-      "name": "native-objects.Date",
+      "name": "static.Date",
       "defaultAppend": "()",
       "strings": [
         "now",
@@ -876,9 +932,8 @@
         },
       ],
     },
-    // Node
     {
-      "name": "native-objects.Node",
+      "name": "static.Node",
       "strings": [
         "ATTRIBUTE_NODE",
         "CDATA_SECTION_NODE",
@@ -896,21 +951,7 @@
     },
     // DOM
     {
-      "name": "dom.variables",
-      "strings": [
-        "document",
-        "history",
-        "localStorage",
-        "location",
-        "screen",
-        "window",
-        "self",
-        "top",
-        "parent",
-      ],
-    },
-    {
-      "name": "dom.properties",
+      "name": "dom-interface.property",
       "strings": [
         "accessKey",
         "attributes",
@@ -951,7 +992,7 @@
       ],
     },
     {
-      "name": "dom.methods",
+      "name": "dom-interface.method",
       "defaultAppend": "()",
       "strings": [
         {
@@ -1067,7 +1108,68 @@
       ],
     },
     {
-      "name": "dom.events",
+      "name": "dom.interface.window",
+      "strings": [
+        "closed",
+        "defaultStatus",
+        "document",
+        "frameElement",
+        "frames",
+        "history",
+        "innerHeight",
+        "innerWidth",
+        "length",
+        "location",
+        "localStorage",
+        "name",
+        "navigator",
+        "opener",
+        "outerHeight",
+        "outerWidth",
+        "pageXOffset",
+        "pageYOffset",
+        "parent",
+        "screen",
+        "screenLeft",
+        "screenTop",
+        "screenX",
+        "screenY",
+        "scrollX",
+        "scrollY",
+        "status",
+      ],
+    },
+    {
+      "name": "dom.interface.window.method",
+      "defaultAppend": "(${1:x}, ${2:y})",
+      "strings": [
+        {
+          "string": "close",
+          "append": "()",
+        },
+        {
+          "string": "getSelection",
+          "append": "()",
+        },
+        "moveBy",
+        "moveTo",
+        {
+          "string": "open",
+          "append": "(${1:URL}, ${2:windowName}${3:, ${4:windowFeatures}})",
+        },
+        {
+          "string": "print",
+          "append": "()",
+        },
+        "resizeBy",
+        "resizeTo",
+        "scroll",
+        "scrollBy",
+        "scrollTo",
+      ],
+    },
+    {
+      "name": "dom.interface.event",
       "strings": [
         "abort",
         "blur",
@@ -1091,7 +1193,7 @@
       ],
     },
     {
-      "name": "dom.document.properties",
+      "name": "dom.interface.document",
       "strings": [
         "anchors",
         "applets",
@@ -1117,7 +1219,7 @@
       ],
     },
     {
-      "name": "dom.document.methods",
+      "name": "dom.interface.document.method",
       "defaultAppend": "()",
       "strings": [
         "clear",
@@ -1203,13 +1305,13 @@
       ],
     },
     {
-      "name": "dom.history.properties",
+      "name": "dom.interface.history",
       "strings": [
         "length",
       ],
     },
     {
-      "name": "dom.history.methods",
+      "name": "dom.interface.history.method",
       "defaultAppend": "()",
       "strings": [
         "back",
@@ -1221,7 +1323,7 @@
       ],
     },
     {
-      "name": "dom.location.properties",
+      "name": "dom.interface.location",
       "strings": [
         "hash",
         "host",
@@ -1234,20 +1336,15 @@
       ],
     },
     {
-      "name": "dom.location.methods",
+      "name": "dom.interface.location.method",
+      "defaultAppend": "(${1:arg})",
       "strings": [
-        {
-          "string": "reload",
-          "append": "(${1:byPassCache})",
-        },
-        {
-          "string": "replace",
-          "append": "(${1:URL})",
-        },
+        "reload",
+        "replace",
       ],
     },
     {
-      "name": "dom.screen.properties",
+      "name": "dom.interface.screen",
       "strings": [
         "availHeight",
         "availWidth",
@@ -1260,130 +1357,16 @@
       ],
     },
     {
-      "name": "dom.window.properties",
+      "name": "dom.interface.localStorage.method",
+      "defaultAppend": "(${1:index})",
       "strings": [
-        "closed",
-        "defaultStatus",
-        "document",
-        "frameElement",
-        "frames",
-        "history",
-        "innerHeight",
-        "innerWidth",
-        "length",
-        "location",
-        "localStorage",
-        "name",
-        "navigator",
-        "opener",
-        "outerHeight",
-        "outerWidth",
-        "pageXOffset",
-        "pageYOffset",
-        "parent",
-        "screen",
-        "screenLeft",
-        "screenTop",
-        "screenX",
-        "screenY",
-        "scrollX",
-        "scrollY",
-        "status",
-      ],
-    },
-    {
-      "name": "dom.window.methods.global",
-      "strings": [
-        {
-          "string": "alert",
-          "append": "(${1:message})",
-        },
-        {
-          "string": "clearInterval",
-          "append": "(${1:intervalID})",
-        },
-        {
-          "string": "clearTimeout",
-          "append": "(${1:timeoutID})",
-        },
-        {
-          "string": "confirm",
-          "append": "(${1:message})",
-        },
-        {
-          "string": "prompt",
-          "append": "(${1:message}, ${2:defaultReply})",
-        },
-        {
-          "string": "setInterval",
-          "append": "(${1:functionReference}, ${2:milliseconds})",
-        },
-        {
-          "string": "setTimeout",
-          "append": "(${1:functionReference}, ${2:milliseconds})",
-        },
-      ],
-    },
-    {
-      "name": "dom.window.methods",
-      "defaultAppend": "()",
-      "strings": [
-        "close",
-        "getSelection",
-        {
-          "string": "moveBy",
-          "append": "(${1:deltaX}, ${2:deltaY})",
-        },
-        {
-          "string": "moveTo",
-          "append": "(${1:x}, ${2:y})",
-        },
-        {
-          "string": "open",
-          "append": "(${1:URL}, ${2:windowName}${3:, ${4:windowFeatures}})",
-        },
-        "print",
-        {
-          "string": "resizeBy",
-          "append": "(${1:deltaX}, ${2:deltaY})",
-        },
-        {
-          "string": "resizeTo",
-          "append": "(${1:x}, ${2:y})",
-        },
-        {
-          "string": "scroll",
-          "append": "(${1:x}, ${2:y})",
-        },
-        {
-          "string": "scrollBy",
-          "append": "(${1:deltaX}, ${2:deltaY})",
-        },
-        {
-          "string": "scrollTo",
-          "append": "(${1:x}, ${2:y})",
-        },
-      ],
-    },
-    {
-      "name": "dom.localStorage.methods",
-      "strings": [
-        {
-          "string": "key",
-          "append": "(${1:index})",
-        },
-        {
-          "string": "getItem",
-          "append": "(${1:key})",
-        },
+        "key",
+        "getItem",
         {
           "string": "setItem",
           "append": "(${1:key}, ${2:value})",
         },
-        {
-          "string": "removeItem",
-          "append": "(${1:key})",
-        },
+        "removeItem",
         {
           "string": "clear",
           "append": "()",
