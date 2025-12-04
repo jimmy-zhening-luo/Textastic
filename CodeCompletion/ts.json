@@ -126,6 +126,22 @@
     },
     {
       "scope": "(source.ts|source.js) - comment - string",
+      "pattern": "\\bArray\\.(\\w*)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "static.Array",
+      ],
+    },
+    {
+      "scope": "(source.ts|source.js) - comment - string",
+      "pattern": "\\bError\\.(\\w*)",
+      "completionCaptureIndex": 1,
+      "completionSetNames": [
+        "static.Error",
+      ],
+    },
+    {
+      "scope": "(source.ts|source.js) - comment - string",
       "pattern": "\\bNode\\.(\\w*)",
       "completionCaptureIndex": 1,
       "completionSetNames": [
@@ -441,7 +457,7 @@
         "this",
         {
           "string": "super",
-          "append": "${1:(${2:arg})}",
+          "append": "($0)",
         },
       ],
     },
@@ -516,7 +532,7 @@
     },
     {
       "name": "newable",
-      "defaultAppend": "($1)",
+      "defaultAppend": "($0)",
       "strings": [
         "Array",
         "Boolean",
@@ -533,7 +549,7 @@
     },
     {
       "name": "newable.Error",
-      "defaultAppend": "(${2:\"${3:message}\"}${4:, { cause: ${5:cause} \\}})",
+      "defaultAppend": "(${1:\"${2:message}\"}${3:, { cause: ${4:cause} \\}})",
       "strings": [
         "Error",
         "EvalError",
@@ -930,6 +946,24 @@
           "string": "UTC",
           "append": "(${1:yyyy}, ${2:mm}, ${3:dd}${4:, ${5:hh}, ${6:mm}, ${7:ss}, ${8:ms}})",
         },
+      ],
+    },
+    {
+      "name": "static.Array",
+      "defaultAppend": "(${1:obj})",
+      "strings": [
+        "isArray",
+        {
+          "string": "from",
+          "append": "(${1:item1}${2:, ${3:item2, ...}})",
+        },
+      ],
+    },
+    {
+      "name": "static.Error",
+      "defaultAppend": "(${1:e})",
+      "strings": [
+        "isError",
       ],
     },
     {
