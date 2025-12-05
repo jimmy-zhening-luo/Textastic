@@ -9,8 +9,6 @@
     <key>fileTypes</key>
     <array>
       <string>ts</string>
-      <string>mts</string>
-      <string>cts</string>
       <string>d.ts</string>
     </array>
     <key>uuid</key>
