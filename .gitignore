@@ -1,4 +1,5 @@
-.vscode/
+.vscode/**
+!.vscode/.code-workspace
 .Trash/
 .DS_Store
 *.icloud
