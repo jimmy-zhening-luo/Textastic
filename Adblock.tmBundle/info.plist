@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>contactEmailRot13</key>
+		<string>foo@example.com</string>
+		<key>contactName</key>
+		<string>Foo Bar</string>
+		<key>description</key>
+		<string>Adblock Syntax</string>
+		<key>name</key>
+		<string>Adblock</string>
+		<key>source</key>
+		<dict>
+			<key>method</key>
+			<string>git</string>
+			<key>url</key>
+			<string>git@github.com:AdguardTeam/VscodeAdblockSyntax</string>
+		</dict>
+		<key>uuid</key>
+		<string>07987E17-4D57-4B6C-B15C-F160A96F5FDE</string>
+	</dict>
+</plist>
