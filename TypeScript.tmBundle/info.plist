@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>contactEmailRot13</key>
-	<string>foo@example.com</string>
-	<key>contactName</key>
-	<string>Foo Bar</string>
-	<key>description</key>
-	<string>TypeScript Syntax</string>
-	<key>name</key>
-	<string>TypeScript</string>
-	<key>source</key>
 	<dict>
-		<key>method</key>
-		<string>git</string>
-		<key>url</key>
-		<string>git@github.com:microsoft/TypeScript-TmLanguage</string>
+		<key>contactEmailRot13</key>
+		<string>foo@example.com</string>
+		<key>contactName</key>
+		<string>Foo Bar</string>
+		<key>description</key>
+		<string>TypeScript Syntax</string>
+		<key>name</key>
+		<string>TypeScript</string>
+		<key>source</key>
+		<dict>
+			<key>method</key>
+			<string>git</string>
+			<key>url</key>
+			<string>git@github.com:microsoft/TypeScript-TmLanguage</string>
+		</dict>
+		<key>uuid</key>
+		<string>02F24E95-E169-44F7-A74C-74B0804F8314</string>
 	</dict>
-	<key>uuid</key>
-	<string>02F24E95-E169-44F7-A74C-74B0804F8314</string>
-</dict>
 </plist>
