@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>contactEmailRot13</key>
-	<string>foo@example.com</string>
-	<key>contactName</key>
-	<string>Foo Bar</string>
-	<key>description</key>
-	<string>Lark Syntax</string>
-	<key>name</key>
-	<string>Lark</string>
-	<key>source</key>
 	<dict>
-		<key>method</key>
-		<string>git</string>
-		<key>url</key>
-		<string>git@github.com:lark-parser/lark_syntax</string>
+		<key>contactEmailRot13</key>
+		<string>foo@example.com</string>
+		<key>contactName</key>
+		<string>Foo Bar</string>
+		<key>description</key>
+		<string>Lark Syntax</string>
+		<key>name</key>
+		<string>Lark</string>
+		<key>source</key>
+		<dict>
+			<key>method</key>
+			<string>git</string>
+			<key>url</key>
+			<string>git@github.com:lark-parser/lark_syntax</string>
+		</dict>
+		<key>uuid</key>
+		<string>D9D853CB-05CD-4FCD-BAAA-0094D0CAFF48</string>
 	</dict>
-	<key>uuid</key>
-	<string>D9D853CB-05CD-4FCD-BAAA-0094D0CAFF48</string>
-</dict>
 </plist>
