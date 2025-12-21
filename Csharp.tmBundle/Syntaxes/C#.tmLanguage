@@ -11,7 +11,13 @@
       <string>cs</string>
     </array>
     <key>uuid</key>
-    <string>4970B670-7294-4C58-8658-4DA4C916120C</string>
+    <string>1BA75B32-707C-11D9-A928-000D93589AF6</string>
+    <key>keyEquivalent</key>
+    <string>^~C</string>
+    <key>foldingStartMarker</key>
+    <string>^\s*#\s*region|^\s*/\*|^(?![^{]*?//|[^{]*?/\*(?!.*?\*/.*?\{)).*?\{\s*($|//|/\*(?!.*?\*/.*\S))</string>
+    <key>foldingStopMarker</key>
+    <string>^\s*#\s*endregion|^\s*\*/|^\s*\}</string>
     <key>patterns</key>
     <array>
       <dict>
