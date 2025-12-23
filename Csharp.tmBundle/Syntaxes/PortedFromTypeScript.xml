@@ -4,6 +4,34 @@
         <array>
           <dict>
             <key>name</key>
+            <string>comment.line.cs</string>
+            <key>begin</key>
+            <string>(^[ \t]+)?((//)(?:\s*(?=\s|$))?)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.whitespace.comment.leading.cs</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>comment.line.double-slash.cs</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.comment.cs</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?=^)</string>
+            <key>contentName</key>
+            <string>comment.line.double-slash.cs</string>
+          </dict>
+          <dict>
+            <key>name</key>
             <string>comment.block.cs</string>
             <key>begin</key>
             <string>(/\*)(?:\s*(?=\s|(\*/)))?</string>
@@ -53,31 +81,4 @@
             <string>comment.line.double-slash.cs</string>
           </dict>
         </array>
-      </dict>
-      <key>single-line-comment-consuming-line-ending</key>
-      <dict>
-        <key>begin</key>
-        <string>(^[ \t]+)?((//)(?:\s*(?=\s|$))?)</string>
-        <key>beginCaptures</key>
-        <dict>
-          <key>1</key>
-          <dict>
-            <key>name</key>
-            <string>punctuation.whitespace.comment.leading.cs</string>
-          </dict>
-          <key>2</key>
-          <dict>
-            <key>name</key>
-            <string>comment.line.double-slash.cs</string>
-          </dict>
-          <key>3</key>
-          <dict>
-            <key>name</key>
-            <string>punctuation.definition.comment.cs</string>
-          </dict>
-        </dict>
-        <key>end</key>
-        <string>(?=^)</string>
-        <key>contentName</key>
-        <string>comment.line.double-slash.cs</string>
       </dict>
