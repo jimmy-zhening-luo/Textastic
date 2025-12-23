@@ -8204,7 +8204,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(\')|((?:[^\\\n])$)</string>
+        <string>((?&lt;!\\)')|((?:[^\\\n])$)</string>
         <key>endCaptures</key>
         <dict>
           <key>1</key>
