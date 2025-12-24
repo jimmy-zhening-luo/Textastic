@@ -12,6 +12,10 @@
 			<string>^(.*\*/)?\s*[\]})].*$</string>
 			<key>increaseIndentPattern</key>
 			<string>^.*[({\[][^\]})"']*$</string>
+			<key>indentNextLinePattern</key>
+			<string>^(?!.*[,;:{}]\s*(//|/\*.*\*/\s*$)).*[^\s,;:{}]\s*$</string>
+			<key>unIndentedLinePattern</key>
+			<string>^\s*((/\*|\*/|//|#).*)?$</string>
 		</dict>
 		<key>uuid</key>
 		<string>a52c15b6-1a18-47b5-bfe0-c450cdc8452a</string>
