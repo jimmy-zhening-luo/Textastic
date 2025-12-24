@@ -9365,34 +9365,6 @@
             <key>name</key>
             <string>comment.block.documentation.cs</string>
             <key>begin</key>
-            <string>(^\s+)?(///)(?!/)</string>
-            <key>while</key>
-            <string>^(\s*)(///)(?!/)</string>
-            <key>captures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.whitespace.comment.leading.cs</string>
-              </dict>
-              <key>2</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.definition.comment.cs</string>
-              </dict>
-            </dict>
-            <key>patterns</key>
-            <array>
-              <dict>
-                <key>include</key>
-                <string>#xml-doc-comment</string>
-              </dict>
-            </array>
-          </dict>
-          <dict>
-            <key>name</key>
-            <string>comment.block.documentation.cs</string>
-            <key>begin</key>
             <string>(^\s+)?(/\*\*)(?!/)</string>
             <key>end</key>
             <string>(^\s+)?(\*/)</string>
