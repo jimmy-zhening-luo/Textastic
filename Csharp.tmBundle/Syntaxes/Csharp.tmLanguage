@@ -5816,7 +5816,7 @@
         <key>name</key>
         <string>string.quoted.double.cs</string>
         <key>begin</key>
-        <string>\$+"""""+</string>
+        <string>\$+("""""+)</string>
         <key>beginCaptures</key>
         <dict>
           <key>0</key>
@@ -5824,9 +5824,14 @@
             <key>name</key>
             <string>punctuation.definition.string.begin.cs</string>
           </dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.definition.string.begin.cs</string>
+          </dict>
         </dict>
         <key>end</key>
-        <string>"""""+</string>
+        <string>\1</string>
         <key>endCaptures</key>
         <dict>
           <key>0</key>
