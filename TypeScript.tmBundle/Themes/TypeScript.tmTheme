@@ -64,7 +64,7 @@
       </dict>
       <dict>
         <key>scope</key>
-        <string>constant.numeric, meta.delimiter.decimal.period.ts, constant.language.nan.ts, constant.language.infinity.ts</string>
+        <string>constant.numeric, meta.delimiter.decimal.period, constant.language.nan, constant.language.infinity</string>
         <key>settings</key>
         <dict>
           <key>vsclassificationtype</key>
@@ -73,7 +73,7 @@
       </dict>
       <dict>
         <key>scope</key>
-        <string>keyword.operator, storage.type.function.arrow.ts</string>
+        <string>keyword.operator, storage.type.function.arrow</string>
         <key>settings</key>
         <dict>
           <key>vsclassificationtype</key>
@@ -82,7 +82,7 @@
       </dict>
       <dict>
         <key>scope</key>
-        <string>meta.brace.angle.ts, meta.brace.round.ts, meta.brace.square.ts, punctuation, constant.language.import-export-all.ts, meta.delimiter.object.comma.ts</string>
+        <string>meta.brace.angle, meta.brace.round, meta.brace.square, punctuation, constant.language.import-export-all</string>
         <key>settings</key>
         <dict>
           <key>vsclassificationtype</key>
@@ -91,7 +91,7 @@
       </dict>
       <dict>
         <key>scope</key>
-        <string>comment, comment.block.ts, comment.line.double-slash.ts, punctuation.definition.comment.ts</string>
+        <string>comment, punctuation.definition.comment</string>
         <key>settings</key>
         <dict>
           <key>vsclassificationtype</key>
@@ -100,25 +100,7 @@
       </dict>
       <dict>
         <key>scope</key>
-        <string>comment.block.documentation.ts, other.meta.jsdoc, other.description.jsdoc</string>
-        <key>settings</key>
-        <dict>
-          <key>vsclassificationtype</key>
-          <string>comment</string>
-        </dict>
-      </dict>
-      <dict>
-        <key>scope</key>
-        <string>entity.name.type.instance.jsdoc</string>
-        <key>settings</key>
-        <dict>
-          <key>vsclassificationtype</key>
-          <string>identifier</string>
-        </dict>
-      </dict>
-      <dict>
-        <key>scope</key>
-        <string>entity.name.type.class.ts</string>
+        <string>entity.name.type.class</string>
         <key>settings</key>
         <dict>
           <key>vsclassificationtype</key>
@@ -127,7 +109,7 @@
       </dict>
       <dict>
         <key>scope</key>
-        <string>entity.name.type.module.ts</string>
+        <string>entity.name.type.module</string>
         <key>settings</key>
         <dict>
           <key>vsclassificationtype</key>
@@ -136,7 +118,7 @@
       </dict>
       <dict>
         <key>scope</key>
-        <string>entity.name.type.enum.ts</string>
+        <string>entity.name.type.enum</string>
         <key>settings</key>
         <dict>
           <key>vsclassificationtype</key>
@@ -145,7 +127,7 @@
       </dict>
       <dict>
         <key>scope</key>
-        <string>meta.template.expression.ts, entity.other.inherited-class.ts</string>
+        <string>meta.template.expression, entity.other.inherited-class</string>
         <key>settings</key>
         <dict>
           <key>vsclassificationtype</key>
@@ -154,7 +136,7 @@
       </dict>
       <dict>
         <key>scope</key>
-        <string>variable, meta.definition.variable.name, support.variable, entity.name.variable, constant.other.placeholder</string>
+        <string>variable, support.variable, entity.name.variable</string>
         <key>settings</key>
         <dict>
           <key>vsclassificationtype</key>
@@ -163,7 +145,7 @@
       </dict>
       <dict>
         <key>scope</key>
-        <string>entity.name.function, support.function, support.constant.handlebars, source.powershell variable.other.member, entity.name.operator.custom-literal</string>
+        <string>entity.name.function, support.function</string>
         <key>settings</key>
         <dict>
           <key>vsclassificationtype</key>
@@ -172,7 +154,7 @@
       </dict>
       <dict>
         <key>scope</key>
-        <string>variable.language.arguments.ts, support.type.object</string>
+        <string>variable.language.arguments, support.type.object</string>
         <key>settings</key>
         <dict>
           <key>vsclassificationtype</key>
@@ -181,25 +163,7 @@
       </dict>
       <dict>
         <key>scope</key>
-        <string>entity.name.tag.inline, entity.name.tag.directive</string>
-        <key>settings</key>
-        <dict>
-          <key>vsclassificationtype</key>
-          <string>HTML Element Name</string>
-        </dict>
-      </dict>
-      <dict>
-        <key>scope</key>
-        <string>entity.other.attribute-name</string>
-        <key>settings</key>
-        <dict>
-          <key>vsclassificationtype</key>
-          <string>HTML Attribute Name</string>
-        </dict>
-      </dict>
-      <dict>
-        <key>scope</key>
-        <string>meta.tag string.quoted, meta.tag string.quoted punctuation.definition.string, meta.tag string.quoted</string>
+        <string>string.quoted, string.quoted punctuation.definition.string</string>
         <key>settings</key>
         <dict>
           <key>vsclassificationtype</key>
