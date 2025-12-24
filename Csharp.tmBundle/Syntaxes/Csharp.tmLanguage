@@ -6238,7 +6238,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>((?&lt;!\\)')|((?:[^\\\n])$)</string>
+        <string>((?&lt;![^\\]\\)')|((?:[^\\\n])$)</string>
         <key>endCaptures</key>
         <dict>
           <key>1</key>
@@ -6282,7 +6282,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>((?&lt;!\\)")|((?:[^\\\n])$)</string>
+        <string>((?&lt;![^\\]\\)")|((?:[^\\\n])$)</string>
         <key>endCaptures</key>
         <dict>
           <key>1</key>
