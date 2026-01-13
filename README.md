@@ -1,9 +1,11 @@
 # [`Textastic`](https://github.com/jimmy-zhening-luo/Textastic)
+
 [ [Manual](https://www.textasticapp.com/v10/manual) ]
 
 ## `./`
 
 ### TextMate grammar: `${language}.tmBundle`
+
 A language definition for Textastic and other text editors. Specifies:
 
 - Language name
@@ -22,34 +24,36 @@ The language is uniquely identified by a scope, e.g., `source.ts` for TypeScript
 At root (here), folder named `./${language}.tmBundle`, containing:
 
 - Manifest: `./info.plist`
-    - Guid
-    - Language formal name, i.e. ${language}
-    - Fake author (name and email)
-    - _Optional:_ file source e.g.
+  - Guid
+  - Language formal name, i.e. ${language}
+  - Fake author (name and email)
+  - _Optional:_ file source e.g.
 
 - Syntax: `./Syntaxes/${language}.tmLanguage`
-    - Guid
-    - Scope name
-    - File extensions
-    - Grammar
+  - Guid
+  - Scope name
+  - File extensions
+  - Grammar
 
 #### ..._optional_
 
 - Preference(s): `./Preferences/*.tmLanguage`
-    - Comment pattern for folding
-    - Indentation
+  - Comment pattern for folding
+  - Indentation
 
 - Theme: `Themes/${language}.tmTheme`
-    - Non-standard scope-syntax mapping
-    - Style
-        - _Examples:_ [filmgirl/TextMate-Themes](https://github.com/filmgirl/TextMate-Themes)
+  - Non-standard scope-syntax mapping
+  - Style
+    - _Examples:_ [filmgirl/TextMate-Themes](https://github.com/filmgirl/TextMate-Themes)
 
 ### Template `./Templates/*.json`
+
 Templates are shown when creating a new file. They prefill the filename/extension and insert a snippet into the new file content. Useful for adding frontmatter, footer, and other boilerplate.
 
 The template content snippet definition support some subset of the TextMate snippet syntax.
 
 #### Template Group
+
 Each template file contains a grouped collection of templates (an empty collection or collection of one are both valid).
 
 A new template can be added to an existing template file or by creating a new template file.
@@ -65,6 +69,7 @@ All templates belonging to a group show up under the same header in the template
 Each template group file must be uniquely identified by a guid. When the template group file is created using the `Template` template in the new file UI, a new guid is automatically generated and placed into the new template group file.
 
 ### Code Completion: `./CodeCompletion/*.json`
+
 A code completion file defines a mapping of scope to code completion triggers, suggestion text, and suggestion expansion for the given scope.
 
 The scope is given as a TextMate scope, e.g., `(source.ts|source.js) - comment - string`.
