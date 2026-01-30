@@ -8,8 +8,6 @@
     <key>settings</key>
     <array>
       <dict>
-        <key>name</key>
-        <string>Comment</string>
         <key>scope</key>
         <string>comment</string>
         <key>settings</key>
@@ -19,8 +17,6 @@
         </dict>
       </dict>
       <dict>
-        <key>name</key>
-        <string>String</string>
         <key>scope</key>
         <string>string</string>
         <key>settings</key>
@@ -30,8 +26,6 @@
         </dict>
       </dict>
       <dict>
-        <key>name</key>
-        <string>Number</string>
         <key>scope</key>
         <string>constant.numeric</string>
         <key>settings</key>
@@ -41,8 +35,6 @@
         </dict>
       </dict>
       <dict>
-        <key>name</key>
-        <string>Built-in constant</string>
         <key>scope</key>
         <string>constant.language</string>
         <key>settings</key>
@@ -52,8 +44,6 @@
         </dict>
       </dict>
       <dict>
-        <key>name</key>
-        <string>User-defined constant</string>
         <key>scope</key>
         <string>constant.character, constant.other</string>
         <key>settings</key>
@@ -63,8 +53,6 @@
         </dict>
       </dict>
       <dict>
-        <key>name</key>
-        <string>Variable</string>
         <key>scope</key>
         <string>variable</string>
         <key>settings</key>
@@ -74,8 +62,6 @@
         </dict>
       </dict>
       <dict>
-        <key>name</key>
-        <string>Keyword</string>
         <key>scope</key>
         <string>keyword</string>
         <key>settings</key>
@@ -85,8 +71,6 @@
         </dict>
       </dict>
       <dict>
-        <key>name</key>
-        <string>Storage</string>
         <key>scope</key>
         <string>storage</string>
         <key>settings</key>
@@ -98,8 +82,6 @@
         </dict>
       </dict>
       <dict>
-        <key>name</key>
-        <string>Storage type</string>
         <key>scope</key>
         <string>storage.type</string>
         <key>settings</key>
@@ -111,8 +93,6 @@
         </dict>
       </dict>
       <dict>
-        <key>name</key>
-        <string>Class name</string>
         <key>scope</key>
         <string>entity.name.class</string>
         <key>settings</key>
@@ -124,8 +104,6 @@
         </dict>
       </dict>
       <dict>
-        <key>name</key>
-        <string>Inherited class</string>
         <key>scope</key>
         <string>entity.other.inherited-class</string>
         <key>settings</key>
@@ -137,8 +115,6 @@
         </dict>
       </dict>
       <dict>
-        <key>name</key>
-        <string>Function name</string>
         <key>scope</key>
         <string>entity.name.function</string>
         <key>settings</key>
@@ -150,8 +126,6 @@
         </dict>
       </dict>
       <dict>
-        <key>name</key>
-        <string>Function argument</string>
         <key>scope</key>
         <string>variable.parameter</string>
         <key>settings</key>
@@ -163,8 +137,6 @@
         </dict>
       </dict>
       <dict>
-        <key>name</key>
-        <string>Tag name</string>
         <key>scope</key>
         <string>entity.name.tag</string>
         <key>settings</key>
@@ -176,8 +148,6 @@
         </dict>
       </dict>
       <dict>
-        <key>name</key>
-        <string>Tag attribute</string>
         <key>scope</key>
         <string>entity.other.attribute-name</string>
         <key>settings</key>
@@ -189,8 +159,6 @@
         </dict>
       </dict>
       <dict>
-        <key>name</key>
-        <string>Library function</string>
         <key>scope</key>
         <string>support.function</string>
         <key>settings</key>
@@ -202,8 +170,6 @@
         </dict>
       </dict>
       <dict>
-        <key>name</key>
-        <string>Library constant</string>
         <key>scope</key>
         <string>support.constant</string>
         <key>settings</key>
@@ -215,8 +181,6 @@
         </dict>
       </dict>
       <dict>
-        <key>name</key>
-        <string>Library class/type</string>
         <key>scope</key>
         <string>support.type, support.class</string>
         <key>settings</key>
@@ -228,8 +192,6 @@
         </dict>
       </dict>
       <dict>
-        <key>name</key>
-        <string>Library variable</string>
         <key>scope</key>
         <string>support.other.variable</string>
         <key>settings</key>
@@ -239,8 +201,6 @@
         </dict>
       </dict>
       <dict>
-        <key>name</key>
-        <string>Invalid</string>
         <key>scope</key>
         <string>invalid</string>
         <key>settings</key>
@@ -254,8 +214,6 @@
         </dict>
       </dict>
       <dict>
-        <key>name</key>
-        <string>Invalid deprecated</string>
         <key>scope</key>
         <string>invalid.deprecated</string>
         <key>settings</key>
@@ -267,8 +225,6 @@
         </dict>
       </dict>
       <dict>
-        <key>name</key>
-        <string>JSON String</string>
         <key>scope</key>
         <string>meta.structure.dictionary.json string.quoted.double.json</string>
         <key>settings</key>
@@ -278,8 +234,6 @@
         </dict>
       </dict>
       <dict>
-        <key>name</key>
-        <string>diff.header</string>
         <key>scope</key>
         <string>meta.diff, meta.diff.header</string>
         <key>settings</key>
@@ -289,8 +243,6 @@
         </dict>
       </dict>
       <dict>
-        <key>name</key>
-        <string>diff.deleted</string>
         <key>scope</key>
         <string>markup.deleted</string>
         <key>settings</key>
@@ -300,8 +252,6 @@
         </dict>
       </dict>
       <dict>
-        <key>name</key>
-        <string>diff.inserted</string>
         <key>scope</key>
         <string>markup.inserted</string>
         <key>settings</key>
@@ -311,8 +261,6 @@
         </dict>
       </dict>
       <dict>
-        <key>name</key>
-        <string>diff.changed</string>
         <key>scope</key>
         <string>markup.changed</string>
         <key>settings</key>
@@ -350,7 +298,7 @@
       </dict>
       <dict>
         <key>scope</key>
-        <string>meta.abp.header</string>
+        <string>meta.header</string>
         <key>settings</key>
         <dict>
           <key>fontStyle</key>
@@ -361,7 +309,7 @@
       </dict>
       <dict>
         <key>scope</key>
-        <string>abp.comment</string>
+        <string>comment</string>
         <key>settings</key>
         <dict>
           <key>foreground</key>
@@ -370,7 +318,7 @@
       </dict>
       <dict>
         <key>scope</key>
-        <string>abp.comment.value</string>
+        <string>comment.value</string>
         <key>settings</key>
         <dict>
           <key>foreground</key>
@@ -379,7 +327,7 @@
       </dict>
       <dict>
         <key>scope</key>
-        <string>abp.call</string>
+        <string>call</string>
         <key>settings</key>
         <dict>
           <key>foreground</key>
@@ -388,7 +336,7 @@
       </dict>
       <dict>
         <key>scope</key>
-        <string>abp.options</string>
+        <string>options</string>
         <key>settings</key>
         <dict>
           <key>foreground</key>
@@ -397,7 +345,7 @@
       </dict>
       <dict>
         <key>scope</key>
-        <string>abp.separator</string>
+        <string>separator</string>
         <key>settings</key>
         <dict>
           <key>foreground</key>
@@ -406,7 +354,7 @@
       </dict>
       <dict>
         <key>scope</key>
-        <string>abp.selector</string>
+        <string>selector</string>
         <key>settings</key>
         <dict>
           <key>foreground</key>
@@ -415,7 +363,7 @@
       </dict>
       <dict>
         <key>scope</key>
-        <string>abp.options.elemhide</string>
+        <string>options.elemhide</string>
         <key>settings</key>
         <dict>
           <key>foreground</key>
@@ -424,7 +372,7 @@
       </dict>
       <dict>
         <key>scope</key>
-        <string>abp.separator.elemhide</string>
+        <string>separator.elemhide</string>
         <key>settings</key>
         <dict>
           <key>foreground</key>
@@ -433,7 +381,7 @@
       </dict>
       <dict>
         <key>scope</key>
-        <string>abp.selector.elemhide</string>
+        <string>selector.elemhide</string>
         <key>settings</key>
         <dict>
           <key>foreground</key>
@@ -442,7 +390,7 @@
       </dict>
       <dict>
         <key>scope</key>
-        <string>abp.selector.elemhide.exception</string>
+        <string>selector.elemhide.exception</string>
         <key>settings</key>
         <dict>
           <key>foreground</key>
@@ -451,7 +399,7 @@
       </dict>
       <dict>
         <key>scope</key>
-        <string>abp.options.blocking</string>
+        <string>options.blocking</string>
         <key>settings</key>
         <dict>
           <key>foreground</key>
@@ -460,7 +408,7 @@
       </dict>
       <dict>
         <key>scope</key>
-        <string>abp.separator.blocking</string>
+        <string>separator.blocking</string>
         <key>settings</key>
         <dict>
           <key>foreground</key>
@@ -469,7 +417,7 @@
       </dict>
       <dict>
         <key>scope</key>
-        <string>abp.selector.blocking</string>
+        <string>selector.blocking</string>
         <key>settings</key>
         <dict>
           <key>foreground</key>
@@ -478,7 +426,7 @@
       </dict>
       <dict>
         <key>scope</key>
-        <string>abp.selector.blocking.exception</string>
+        <string>selector.blocking.exception</string>
         <key>settings</key>
         <dict>
           <key>foreground</key>
