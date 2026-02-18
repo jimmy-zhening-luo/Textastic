@@ -175,6 +175,10 @@
           </dict>
           <dict>
             <key>include</key>
+            <string>#fixed-size-buffer-declaration</string>
+          </dict>
+          <dict>
+            <key>include</key>
             <string>#field-declaration</string>
           </dict>
           <dict>
@@ -457,6 +461,14 @@
           </dict>
           <dict>
             <key>include</key>
+            <string>#boolean-literal</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#null-literal</string>
+          </dict>
+          <dict>
+            <key>include</key>
             <string>#anonymous-method-expression</string>
           </dict>
           <dict>
@@ -668,7 +680,7 @@
       <key>attribute-section</key>
       <dict>
         <key>begin</key>
-        <string>(\[)(assembly|module|field|event|method|param|property|return|type)?(\:)?</string>
+        <string>(\[)(assembly|module|field|event|method|param|property|return|typevar|type)?(\:)?</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -975,23 +987,23 @@
 (?:\b(delegate)\b)\s+
 (?&lt;type_name&gt;
   (?:
-    (?:ref\s+(?:readonly\s+)?)?
+    (?:ref\s+(?:readonly\s+)?)?   # ref return
     (?:
-      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)?
-      (?&lt;name_and_type_args&gt;
+      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)? # alias-qualification
+      (?&lt;name_and_type_args&gt; # identifier + type arguments (if any)
         \g&lt;identifier&gt;\s*
         (?&lt;type_args&gt;\s*&lt;(?:[^&lt;&gt;]|\g&lt;type_args&gt;)+&gt;\s*)?
       )
-      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* |
+      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* | # Are there any more names being dotted into?
       (?&lt;tuple&gt;\s*\((?:[^\(\)]|\g&lt;tuple&gt;)+\))
     )
-    (?:\s*\?\s*)?
-    (?:\s*
+    (?:\s*\?\s*)? # nullable suffix?
+    (?:\s* # array suffix?
       \[
-        (?:\s*,\s*)*
+        (?:\s*,\s*)* # commata for multi-dimensional arrays
       \]
       \s*
-      (?:\?)?
+      (?:\?)? # arrays can be nullable reference types
       \s*
     )*
   )
@@ -1549,9 +1561,9 @@
         <key>begin</key>
         <string>(?x)
 (?:
-  (@?[_[:alpha:]][_[:alnum:]]*)\s*(\.)
+  (@?[_[:alpha:]][_[:alnum:]]*)\s*(\.)  # qualified name part
 )*
-(@?[_[:alpha:]][_[:alnum:]]*)\s*
+(@?[_[:alpha:]][_[:alnum:]]*)\s*        # type name
 (
   &lt;
   (?&lt;type_args&gt;
@@ -1560,8 +1572,8 @@
     &lt;\g&lt;type_args&gt;*&gt;
   )*
   &gt;\s*
-)?
-(?=\()</string>
+)?                                      # optional type arguments
+(?=\()                                  # followed by argument list</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -1692,6 +1704,60 @@
           </dict>
         </array>
       </dict>
+      <key>fixed-size-buffer-declaration</key>
+      <dict>
+        <key>begin</key>
+        <string>(?x)
+\b(fixed)\b\s+
+(?&lt;type_name&gt;
+  (?:
+    (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)? # alias-qualification
+    (?&lt;name_and_type_args&gt; # identifier + type arguments (if any)
+      \g&lt;identifier&gt;\s*
+      (?&lt;type_args&gt;\s*&lt;(?:[^&lt;&gt;]|\g&lt;type_args&gt;)+&gt;\s*)?
+    )
+    (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* # Are there any more names being dotted into?
+  )
+)\s+
+(\g&lt;identifier&gt;)\s* # buffer name
+(?=\[)</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>storage.modifier.fixed.cs</string>
+          </dict>
+          <key>2</key>
+          <dict>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#type</string>
+              </dict>
+            </array>
+          </dict>
+          <key>6</key>
+          <dict>
+            <key>name</key>
+            <string>entity.name.variable.field.cs</string>
+          </dict>
+        </dict>
+        <key>end</key>
+        <string>(?=;)</string>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#bracketed-argument-list</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#comment</string>
+          </dict>
+        </array>
+      </dict>
       <key>field-declaration</key>
       <dict>
         <key>begin</key>
@@ -1699,26 +1765,26 @@
 (?&lt;type_name&gt;
   (?:
     (?:
-      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)?
-      (?&lt;name_and_type_args&gt;
+      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)? # alias-qualification
+      (?&lt;name_and_type_args&gt; # identifier + type arguments (if any)
         \g&lt;identifier&gt;\s*
         (?&lt;type_args&gt;\s*&lt;(?:[^&lt;&gt;]|\g&lt;type_args&gt;)+&gt;\s*)?
       )
-      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* |
+      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* | # Are there any more names being dotted into?
       (?&lt;tuple&gt;\s*\((?:[^\(\)]|\g&lt;tuple&gt;)+\))
     )
-    (?:\s*\?\s*)?
-    (?:\s*
+    (?:\s*\?\s*)? # nullable suffix?
+    (?:\s* # array suffix?
       \[
-        (?:\s*,\s*)*
+        (?:\s*,\s*)* # commata for multi-dimensional arrays
       \]
       \s*
-      (?:\?)?
+      (?:\?)? # arrays can be nullable reference types
       \s*
     )*
   )
 )\s+
-(\g&lt;identifier&gt;)\s*
+(\g&lt;identifier&gt;)\s* # first field name
 (?!=&gt;|==)(?=,|;|=|$)</string>
         <key>beginCaptures</key>
         <dict>
@@ -1778,23 +1844,23 @@
 (?&lt;return_type&gt;
   (?&lt;type_name&gt;
     (?:
-      (?:ref\s+(?:readonly\s+)?)?
+      (?:ref\s+(?:readonly\s+)?)?   # ref return
       (?:
-        (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)?
-        (?&lt;name_and_type_args&gt;
+        (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)? # alias-qualification
+        (?&lt;name_and_type_args&gt; # identifier + type arguments (if any)
           \g&lt;identifier&gt;\s*
           (?&lt;type_args&gt;\s*&lt;(?:[^&lt;&gt;]|\g&lt;type_args&gt;)+&gt;\s*)?
         )
-        (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* |
+        (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* | # Are there any more names being dotted into?
         (?&lt;tuple&gt;\s*\((?:[^\(\)]|\g&lt;tuple&gt;)+\))
       )
-      (?:\s*\?\s*)?
-      (?:\s*
+      (?:\s*\?\s*)? # nullable suffix?
+      (?:\s* # array suffix?
         \[
-          (?:\s*,\s*)*
+          (?:\s*,\s*)* # commata for multi-dimensional arrays
         \]
         \s*
-        (?:\?)?
+        (?:\?)? # arrays can be nullable reference types
         \s*
       )*
     )
@@ -1868,23 +1934,23 @@
 (?&lt;return_type&gt;
   (?&lt;type_name&gt;
     (?:
-      (?:ref\s+(?:readonly\s+)?)?
+      (?:ref\s+(?:readonly\s+)?)?   # ref return
       (?:
-        (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)?
-        (?&lt;name_and_type_args&gt;
+        (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)? # alias-qualification
+        (?&lt;name_and_type_args&gt; # identifier + type arguments (if any)
           \g&lt;identifier&gt;\s*
           (?&lt;type_args&gt;\s*&lt;(?:[^&lt;&gt;]|\g&lt;type_args&gt;)+&gt;\s*)?
         )
-        (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* |
+        (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* | # Are there any more names being dotted into?
         (?&lt;tuple&gt;\s*\((?:[^\(\)]|\g&lt;tuple&gt;)+\))
       )
-      (?:\s*\?\s*)?
-      (?:\s*
+      (?:\s*\?\s*)? # nullable suffix?
+      (?:\s* # array suffix?
         \[
-          (?:\s*,\s*)*
+          (?:\s*,\s*)* # commata for multi-dimensional arrays
         \]
         \s*
-        (?:\?)?
+        (?:\?)? # arrays can be nullable reference types
         \s*
       )*
     )
@@ -1960,28 +2026,28 @@
   (?&lt;type_name&gt;
     (?:
       (?:
-        (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)?
-        (?&lt;name_and_type_args&gt;
+        (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)? # alias-qualification
+        (?&lt;name_and_type_args&gt; # identifier + type arguments (if any)
           \g&lt;identifier&gt;\s*
           (?&lt;type_args&gt;\s*&lt;(?:[^&lt;&gt;]|\g&lt;type_args&gt;)+&gt;\s*)?
         )
-        (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* |
+        (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* | # Are there any more names being dotted into?
         (?&lt;tuple&gt;\s*\((?:[^\(\)]|\g&lt;tuple&gt;)+\))
       )
-      (?:\s*\?\s*)?
-      (?:\s*
+      (?:\s*\?\s*)? # nullable suffix?
+      (?:\s* # array suffix?
         \[
-          (?:\s*,\s*)*
+          (?:\s*,\s*)* # commata for multi-dimensional arrays
         \]
         \s*
-        (?:\?)?
+        (?:\?)? # arrays can be nullable reference types
         \s*
       )*
     )
   )\s+
 )
 (?&lt;interface_name&gt;\g&lt;type_name&gt;\s*\.\s*)?
-(\g&lt;identifier&gt;)\s*
+(\g&lt;identifier&gt;)\s* # first event name
 (?=\{|;|,|=|//|/\*|$)</string>
         <key>beginCaptures</key>
         <dict>
@@ -2109,13 +2175,18 @@
           </dict>
           <dict>
             <key>begin</key>
-            <string>\b(get)\b\s*(?=\{|;|=&gt;|//|/\*|$)</string>
+            <string>(?:\b(readonly)\s+)?\b(get)\b\s*(?=\{|;|=&gt;|//|/\*|$)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>storage.type.accessor.$1.cs</string>
+                <string>storage.modifier.readonly.cs</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>storage.type.accessor.get.cs</string>
               </dict>
             </dict>
             <key>end</key>
@@ -2354,23 +2425,23 @@
 (?&lt;return_type&gt;
   (?&lt;type_name&gt;
     (?:
-      (?:ref\s+(?:readonly\s+)?)?
+      (?:ref\s+(?:readonly\s+)?)?   # ref return
       (?:
-        (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)?
-        (?&lt;name_and_type_args&gt;
+        (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)? # alias-qualification
+        (?&lt;name_and_type_args&gt; # identifier + type arguments (if any)
           \g&lt;identifier&gt;\s*
           (?&lt;type_args&gt;\s*&lt;(?:[^&lt;&gt;]|\g&lt;type_args&gt;)+&gt;\s*)?
         )
-        (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* |
+        (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* | # Are there any more names being dotted into?
         (?&lt;tuple&gt;\s*\((?:[^\(\)]|\g&lt;tuple&gt;)+\))
       )
-      (?:\s*\?\s*)?
-      (?:\s*
+      (?:\s*\?\s*)? # nullable suffix?
+      (?:\s* # array suffix?
         \[
-          (?:\s*,\s*)*
+          (?:\s*,\s*)* # commata for multi-dimensional arrays
         \]
         \s*
-        (?:\?)?
+        (?:\?)? # arrays can be nullable reference types
         \s*
       )*
     )
@@ -2574,23 +2645,23 @@
         <string>(?x)
 (?&lt;type_name&gt;
   (?:
-    (?:ref\s+(?:readonly\s+)?)?
+    (?:ref\s+(?:readonly\s+)?)?   # ref return
     (?:
-      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)?
-      (?&lt;name_and_type_args&gt;
+      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)? # alias-qualification
+      (?&lt;name_and_type_args&gt; # identifier + type arguments (if any)
         \g&lt;identifier&gt;\s*
         (?&lt;type_args&gt;\s*&lt;(?:[^&lt;&gt;]|\g&lt;type_args&gt;)+&gt;\s*)?
       )
-      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* |
+      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* | # Are there any more names being dotted into?
       (?&lt;tuple&gt;\s*\((?:[^\(\)]|\g&lt;tuple&gt;)+\))
     )
-    (?:\s*\?\s*)?
-    (?:\s*
+    (?:\s*\?\s*)? # nullable suffix?
+    (?:\s* # array suffix?
       \[
-        (?:\s*,\s*)*
+        (?:\s*,\s*)* # commata for multi-dimensional arrays
       \]
       \s*
-      (?:\?)?
+      (?:\?)? # arrays can be nullable reference types
       \s*
     )*
   )
@@ -2651,23 +2722,23 @@
 (?&lt;operator_keyword&gt;(?:\b(?:operator)))\s*
 (?&lt;type_name&gt;
   (?:
-    (?:ref\s+(?:readonly\s+)?)?
+    (?:ref\s+(?:readonly\s+)?)?   # ref return
     (?:
-      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)?
-      (?&lt;name_and_type_args&gt;
+      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)? # alias-qualification
+      (?&lt;name_and_type_args&gt; # identifier + type arguments (if any)
         \g&lt;identifier&gt;\s*
         (?&lt;type_args&gt;\s*&lt;(?:[^&lt;&gt;]|\g&lt;type_args&gt;)+&gt;\s*)?
       )
-      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* |
+      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* | # Are there any more names being dotted into?
       (?&lt;tuple&gt;\s*\((?:[^\(\)]|\g&lt;tuple&gt;)+\))
     )
-    (?:\s*\?\s*)?
-    (?:\s*
+    (?:\s*\?\s*)? # nullable suffix?
+    (?:\s* # array suffix?
       \[
-        (?:\s*,\s*)*
+        (?:\s*,\s*)* # commata for multi-dimensional arrays
       \]
       \s*
-      (?:\?)?
+      (?:\?)? # arrays can be nullable reference types
       \s*
     )*
   )
@@ -4330,26 +4401,26 @@
                 <key>match</key>
                 <string>(?x)
 (?:
-  (?:(\bref)\s+)?(\bvar\b)|
+  (?:(\bref)\s+)?(\bvar\b)| # ref local
   (?&lt;type_name&gt;
     (?:
-      (?:ref\s+)?
+      (?:ref\s+)?   # ref local
       (?:
-        (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)?
-        (?&lt;name_and_type_args&gt;
+        (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)? # alias-qualification
+        (?&lt;name_and_type_args&gt; # identifier + type arguments (if any)
           \g&lt;identifier&gt;\s*
           (?&lt;type_args&gt;\s*&lt;(?:[^&lt;&gt;]|\g&lt;type_args&gt;)+&gt;\s*)?
         )
-        (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* |
+        (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* | # Are there any more names being dotted into?
         (?&lt;tuple&gt;\s*\((?:[^\(\)]|\g&lt;tuple&gt;)+\))
       )
-      (?:\s*\?\s*)?
-      (?:\s*
+      (?:\s*\?\s*)? # nullable suffix?
+      (?:\s* # array suffix?
         \[
-          (?:\s*,\s*)*
+          (?:\s*,\s*)* # commata for multi-dimensional arrays
         \]
         \s*
-        (?:\?)?
+        (?:\?)? # arrays can be nullable reference types
         \s*
       )*
     )
@@ -4393,7 +4464,7 @@
               </dict>
               <dict>
                 <key>match</key>
-                <string>(?x)
+                <string>(?x) # match foreach (var (x, y) in ...)
 (?:\b(var)\b\s*)?
 (?&lt;tuple&gt;\((?:[^\(\)]|\g&lt;tuple&gt;)+\))\s+
 \b(in)\b</string>
@@ -4544,21 +4615,21 @@
 (?&lt;type_name&gt;
   (?:
     (?:
-      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)?
-      (?&lt;name_and_type_args&gt;
+      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)? # alias-qualification
+      (?&lt;name_and_type_args&gt; # identifier + type arguments (if any)
         \g&lt;identifier&gt;\s*
         (?&lt;type_args&gt;\s*&lt;(?:[^&lt;&gt;]|\g&lt;type_args&gt;)+&gt;\s*)?
       )
-      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* |
+      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* | # Are there any more names being dotted into?
       (?&lt;tuple&gt;\s*\((?:[^\(\)]|\g&lt;tuple&gt;)+\))
     )
-    (?:\s*\?\s*)?
-    (?:\s*
+    (?:\s*\?\s*)? # nullable suffix?
+    (?:\s* # array suffix?
       \[
-        (?:\s*,\s*)*
+        (?:\s*,\s*)* # commata for multi-dimensional arrays
       \]
       \s*
-      (?:\?)?
+      (?:\?)? # arrays can be nullable reference types
       \s*
     )*
   )
@@ -4878,6 +4949,10 @@
             <key>include</key>
             <string>#local-tuple-var-deconstruction</string>
           </dict>
+          <dict>
+            <key>include</key>
+            <string>#local-tuple-declaration-deconstruction</string>
+          </dict>
         </array>
       </dict>
       <key>local-variable-declaration</key>
@@ -4885,26 +4960,27 @@
         <key>begin</key>
         <string>(?x)
 (?:
-  (?:(\bref)\s+(?:(\breadonly)\s+)?)?(\bvar\b)|
+  (?:(\bref)\s+(?:(\breadonly)\s+)?)?(\bvar\b)| # ref local
   (?&lt;type_name&gt;
     (?:
-      (?:ref\s+(?:readonly\s+)?)?
+      (?:ref\s+(?:readonly\s+)?)?   # ref local
       (?:
-        (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)?
-        (?&lt;name_and_type_args&gt;
+        (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)? # alias-qualification
+        (?&lt;name_and_type_args&gt; # identifier + type arguments (if any)
           \g&lt;identifier&gt;\s*
           (?&lt;type_args&gt;\s*&lt;(?:[^&lt;&gt;]|\g&lt;type_args&gt;)+&gt;\s*)?
         )
-        (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* |
+        (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* | # Are there any more names being dotted into?
         (?&lt;tuple&gt;\s*\((?:[^\(\)]|\g&lt;tuple&gt;)+\))
       )
-      (?:\s*[?*]\s*)?
-      (?:\s*
+      (?:\s*\*\s*)* # pointer suffix?
+      (?:\s*\?\s*)? # nullable suffix?
+      (?:\s* # array suffix?
         \[
-          (?:\s*,\s*)*
+          (?:\s*,\s*)* # commata for multi-dimensional arrays
         \]
         \s*
-        (?:\?)?
+        (?:\?)? # arrays can be nullable reference types
         \s*
       )*
     )
@@ -4978,21 +5054,21 @@
 (?&lt;type_name&gt;
   (?:
     (?:
-      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)?
-      (?&lt;name_and_type_args&gt;
+      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)? # alias-qualification
+      (?&lt;name_and_type_args&gt; # identifier + type arguments (if any)
         \g&lt;identifier&gt;\s*
         (?&lt;type_args&gt;\s*&lt;(?:[^&lt;&gt;]|\g&lt;type_args&gt;)+&gt;\s*)?
       )
-      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* |
+      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* | # Are there any more names being dotted into?
       (?&lt;tuple&gt;\s*\((?:[^\(\)]|\g&lt;tuple&gt;)+\))
     )
-    (?:\s*\?\s*)?
-    (?:\s*
+    (?:\s*\?\s*)? # nullable suffix?
+    (?:\s* # array suffix?
       \[
-        (?:\s*,\s*)*
+        (?:\s*,\s*)* # commata for multi-dimensional arrays
       \]
       \s*
-      (?:\?)?
+      (?:\?)? # arrays can be nullable reference types
       \s*
     )*
   )
@@ -5052,22 +5128,22 @@
         <string>(?x)
 \b((?:(?:async|unsafe|static|extern)\s+)*)
 (?&lt;type_name&gt;
-  (?:ref\s+(?:readonly\s+)?)?
+  (?:ref\s+(?:readonly\s+)?)?   # ref return
   (?:
-    (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)?
-    (?&lt;name_and_type_args&gt;
+    (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)? # alias-qualification
+    (?&lt;name_and_type_args&gt; # identifier + type arguments (if any)
       \g&lt;identifier&gt;\s*
       (?&lt;type_args&gt;\s*&lt;(?:[^&lt;&gt;]|\g&lt;type_args&gt;)+&gt;\s*)?
     )
-    (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* |
+    (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* | # Are there any more names being dotted into?
     (?&lt;tuple&gt;\s*\((?:[^\(\)]|\g&lt;tuple&gt;)+\))
   )
-  (?:\s*\?)?
-  (?:\s*
+  (?:\s*\?)? # nullable suffix?
+  (?:\s* # array suffix?
     \[
-      \s*(?:,\s*)*
+      \s*(?:,\s*)* # commata for multi-dimensional arrays
     \]
-    (?:\s*\?)?
+    (?:\s*\?)? # arrays can be nullable reference types
   )*
 )\s+
 (\g&lt;identifier&gt;)\s*
@@ -5140,7 +5216,7 @@
       <key>local-tuple-var-deconstruction</key>
       <dict>
         <key>begin</key>
-        <string>(?x)
+        <string>(?x) # e.g. var (x, y) = GetPoint();
 (?:\b(var)\b\s*)
 (?&lt;tuple&gt;\((?:[^\(\)]|\g&lt;tuple&gt;)+\))\s*
 (?=;|=|\))</string>
@@ -5175,6 +5251,26 @@
             <string>#variable-initializer</string>
           </dict>
         </array>
+      </dict>
+      <key>local-tuple-declaration-deconstruction</key>
+      <dict>
+        <key>match</key>
+        <string>(?x) # e.g. (int x, var y) = GetPoint();
+(?&lt;tuple&gt;\((?:[^\(\)]|\g&lt;tuple&gt;)+\))\s*
+(?!=&gt;|==)(?==)</string>
+        <key>captures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#tuple-declaration-deconstruction-element-list</string>
+              </dict>
+            </array>
+          </dict>
+        </dict>
       </dict>
       <key>tuple-deconstruction-assignment</key>
       <dict>
@@ -5238,7 +5334,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>(?x)
+            <string>(?x) # e.g. x
 (@?[_[:alpha:]][_[:alnum:]]*)\b\s*
 (?=[,)])</string>
             <key>captures</key>
@@ -5294,7 +5390,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>(?x)
+            <string>(?x) # e.g. x
 (@?[_[:alpha:]][_[:alnum:]]*)\b\s*
 (?=[,)])</string>
             <key>captures</key>
@@ -5311,27 +5407,27 @@
       <key>declaration-expression-local</key>
       <dict>
         <key>match</key>
-        <string>(?x)
+        <string>(?x) # e.g. int x OR var x
 (?:
   \b(var)\b|
   (?&lt;type_name&gt;
     (?:
       (?:
-        (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)?
-        (?&lt;name_and_type_args&gt;
+        (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)? # alias-qualification
+        (?&lt;name_and_type_args&gt; # identifier + type arguments (if any)
           \g&lt;identifier&gt;\s*
           (?&lt;type_args&gt;\s*&lt;(?:[^&lt;&gt;]|\g&lt;type_args&gt;)+&gt;\s*)?
         )
-        (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* |
+        (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* | # Are there any more names being dotted into?
         (?&lt;tuple&gt;\s*\((?:[^\(\)]|\g&lt;tuple&gt;)+\))
       )
-      (?:\s*\?\s*)?
-      (?:\s*
+      (?:\s*\?\s*)? # nullable suffix?
+      (?:\s* # array suffix?
         \[
-          (?:\s*,\s*)*
+          (?:\s*,\s*)* # commata for multi-dimensional arrays
         \]
         \s*
-        (?:\?)?
+        (?:\?)? # arrays can be nullable reference types
         \s*
       )*
     )
@@ -5366,27 +5462,27 @@
       <key>declaration-expression-tuple</key>
       <dict>
         <key>match</key>
-        <string>(?x)
+        <string>(?x) # e.g. int x OR var x
 (?:
   \b(var)\b|
   (?&lt;type_name&gt;
     (?:
       (?:
-        (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)?
-        (?&lt;name_and_type_args&gt;
+        (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)? # alias-qualification
+        (?&lt;name_and_type_args&gt; # identifier + type arguments (if any)
           \g&lt;identifier&gt;\s*
           (?&lt;type_args&gt;\s*&lt;(?:[^&lt;&gt;]|\g&lt;type_args&gt;)+&gt;\s*)?
         )
-        (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* |
+        (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* | # Are there any more names being dotted into?
         (?&lt;tuple&gt;\s*\((?:[^\(\)]|\g&lt;tuple&gt;)+\))
       )
-      (?:\s*\?\s*)?
-                (?:\s*
+      (?:\s*\?\s*)? # nullable suffix?
+                (?:\s* # array suffix?
       \[
-        (?:\s*,\s*)*
+        (?:\s*,\s*)* # commata for multi-dimensional arrays
       \]
       \s*
-      (?:\?)?
+      (?:\?)? # arrays can be nullable reference types
       \s*
     )*
     )
@@ -6423,17 +6519,17 @@
         <key>name</key>
         <string>string.quoted.double.cs</string>
         <key>begin</key>
-        <string>("""""+)</string>
+        <string>"""""+</string>
         <key>beginCaptures</key>
         <dict>
-          <key>1</key>
+          <key>0</key>
           <dict>
             <key>name</key>
             <string>punctuation.definition.string.begin.cs</string>
           </dict>
         </dict>
         <key>end</key>
-        <string>\1</string>
+        <string>\0</string>
         <key>endCaptures</key>
         <dict>
           <key>0</key>
@@ -6761,21 +6857,21 @@
 (?&lt;type_name&gt;
   (?:
     (?:
-      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)?
-      (?&lt;name_and_type_args&gt;
+      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)? # alias-qualification
+      (?&lt;name_and_type_args&gt; # identifier + type arguments (if any)
         \g&lt;identifier&gt;\s*
         (?&lt;type_args&gt;\s*&lt;(?:[^&lt;&gt;]|\g&lt;type_args&gt;)+&gt;\s*)?
       )
-      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* |
+      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* | # Are there any more names being dotted into?
       (?&lt;tuple&gt;\s*\((?:[^\(\)]|\g&lt;tuple&gt;)+\))
     )
-    (?:\s*\?\s*)?
-    (?:\s*
+    (?:\s*\?\s*)? # nullable suffix?
+    (?:\s* # array suffix?
       \[
-        (?:\s*,\s*)*
+        (?:\s*,\s*)* # commata for multi-dimensional arrays
       \]
       \s*
-      (?:\?)?
+      (?:\?)? # arrays can be nullable reference types
       \s*
     )*
   )
@@ -6813,20 +6909,20 @@
 (?&lt;type_name&gt;
   (?:
     (?:
-      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)?
-      (?&lt;name_and_type_args&gt;
+      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)? # alias-qualification
+      (?&lt;name_and_type_args&gt; # identifier + type arguments (if any)
         \g&lt;identifier&gt;\s*
         (?&lt;type_args&gt;\s*&lt;(?:[^&lt;&gt;]|\g&lt;type_args&gt;)+&gt;\s*)?
       )
-      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* |
+      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* | # Are there any more names being dotted into?
       (?&lt;tuple&gt;\s*\((?:[^\(\)]|\g&lt;tuple&gt;)+\))
     )
-    (?:\s*\?(?!\?))?
-    (?:\s*
+    (?:\s*\?(?!\?))? # nullable suffix?
+    (?:\s* # array suffix?
       \[
-        \s*(?:,\s*)*
+        \s*(?:,\s*)* # commata for multi-dimensional arrays
       \]
-      (?:\s*\?(?!\?))?
+      (?:\s*\?(?!\?))? # arrays can be nullable reference types
     )*
   )
 )?</string>
@@ -6872,11 +6968,11 @@
         <key>begin</key>
         <string>(?x)
 (?:
-  (?:(\?)\s*)?
-  (\.)\s*|
-  (-&gt;)\s*
+  (?:(\?)\s*)?                                    # preceding null-conditional operator?
+  (\.)\s*|                                        # preceding dot?
+  (-&gt;)\s*                                         # preceding pointer arrow?
 )?
-(@?[_[:alpha:]][_[:alnum:]]*)\s*
+(@?[_[:alpha:]][_[:alnum:]]*)\s*                  # method name
 (
   &lt;
   (?&lt;type_args&gt;
@@ -6885,8 +6981,8 @@
     &lt;\g&lt;type_args&gt;*&gt;
   )*
   &gt;\s*
-)?
-(?=\()</string>
+)?                                                # type arguments
+(?=\()                                            # open paren of argument list</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -6935,13 +7031,13 @@
         <key>begin</key>
         <string>(?x)
 (?:
-  (?:(\?)\s*)?
-  (\.)\s*|
-  (-&gt;)\s*
+  (?:(\?)\s*)?  # preceding null-conditional operator?
+  (\.)\s*|      # preceding dot?
+  (-&gt;)\s*       # preceding pointer arrow?
 )?
-(?:(@?[_[:alpha:]][_[:alnum:]]*)\s*)?
-(?:(\?)\s*)?
-(?=\[)</string>
+(?:(@?[_[:alpha:]][_[:alnum:]]*)\s*)? # property name
+(?:(\?)\s*)?                        # null-conditional operator?
+(?=\[)                              # open bracket of argument list</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -6988,12 +7084,12 @@
             <key>match</key>
             <string>(?x)
 (?:
-  (?:(\?)\s*)?
-  (\.)\s*|
-  (-&gt;)\s*
+  (?:(\?)\s*)?                    # preceding null-conditional operator?
+  (\.)\s*|                        # preceding dot?
+  (-&gt;)\s*                         # preceding pointer arrow?
 )
-(@?[_[:alpha:]][_[:alnum:]]*)\s*
-(?![_[:alnum:]]|\(|(\?)?\[|&lt;)</string>
+(@?[_[:alpha:]][_[:alnum:]]*)\s*  # property name
+(?![_[:alnum:]]|\(|(\?)?\[|&lt;)     # next character is not alpha-numeric, nor a (, [, or &lt;. Also, test for ?[</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -7093,21 +7189,21 @@
 (?&lt;type_name&gt;
   (?:
     (?:
-      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)?
-      (?&lt;name_and_type_args&gt;
+      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)? # alias-qualification
+      (?&lt;name_and_type_args&gt; # identifier + type arguments (if any)
         \g&lt;identifier&gt;\s*
         (?&lt;type_args&gt;\s*&lt;(?:[^&lt;&gt;]|\g&lt;type_args&gt;)+&gt;\s*)?
       )
-      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* |
+      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* | # Are there any more names being dotted into?
       (?&lt;tuple&gt;\s*\((?:[^\(\)]|\g&lt;tuple&gt;)+\))
     )
-    (?:\s*\?\s*)?
-    (?:\s*
+    (?:\s*\?\s*)? # nullable suffix?
+    (?:\s* # array suffix?
       \[
-        (?:\s*,\s*)*
+        (?:\s*,\s*)* # commata for multi-dimensional arrays
       \]
       \s*
-      (?:\?)?
+      (?:\?)? # arrays can be nullable reference types
       \s*
     )*
   )
@@ -7149,21 +7245,21 @@
 (?&lt;type_name&gt;
   (?:
     (?:
-      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)?
-      (?&lt;name_and_type_args&gt;
+      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)? # alias-qualification
+      (?&lt;name_and_type_args&gt; # identifier + type arguments (if any)
         \g&lt;identifier&gt;\s*
         (?&lt;type_args&gt;\s*&lt;(?:[^&lt;&gt;]|\g&lt;type_args&gt;)+&gt;\s*)?
       )
-      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* |
+      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* | # Are there any more names being dotted into?
       (?&lt;tuple&gt;\s*\((?:[^\(\)]|\g&lt;tuple&gt;)+\))
     )
-    (?:\s*\?\s*)?
-    (?:\s*
+    (?:\s*\?\s*)? # nullable suffix?
+    (?:\s* # array suffix?
       \[
-        (?:\s*,\s*)*
+        (?:\s*,\s*)* # commata for multi-dimensional arrays
       \]
       \s*
-      (?:\?)?
+      (?:\?)? # arrays can be nullable reference types
       \s*
     )*
   )
@@ -7196,21 +7292,22 @@
 (?&lt;type_name&gt;
   (?:
     (?:
-      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)?
-      (?&lt;name_and_type_args&gt;
+      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)? # alias-qualification
+      (?&lt;name_and_type_args&gt; # identifier + type arguments (if any)
         \g&lt;identifier&gt;\s*
         (?&lt;type_args&gt;\s*&lt;(?:[^&lt;&gt;]|\g&lt;type_args&gt;)+&gt;\s*)?
       )
-      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* |
+      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* | # Are there any more names being dotted into?
       (?&lt;tuple&gt;\s*\((?:[^\(\)]|\g&lt;tuple&gt;)+\))
     )
-    (?:\s*\?\s*)?
-    (?:\s*
+    (?:\s*\*\s*)* # pointer suffix?
+    (?:\s*\?\s*)? # nullable suffix?
+    (?:\s* # array suffix?
       \[
-        (?:\s*,\s*)*
+        (?:\s*,\s*)* # commata for multi-dimensional arrays
       \]
       \s*
-      (?:\?)?
+      (?:\?)? # arrays can be nullable reference types
       \s*
     )*
   )
@@ -7378,23 +7475,23 @@
 (?:(?:\b(ref|params|out|in|this)\b)\s+)?
 (?&lt;type_name&gt;
   (?:
-    (?:ref\s+)?
+    (?:ref\s+)?   # ref return
     (?:
-      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)?
-      (?&lt;name_and_type_args&gt;
+      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)? # alias-qualification
+      (?&lt;name_and_type_args&gt; # identifier + type arguments (if any)
         \g&lt;identifier&gt;\s*
         (?&lt;type_args&gt;\s*&lt;(?:[^&lt;&gt;]|\g&lt;type_args&gt;)+&gt;\s*)?
       )
-      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* |
+      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* | # Are there any more names being dotted into?
       (?&lt;tuple&gt;\s*\((?:[^()]|\g&lt;tuple&gt;)+\))
     )
-    (?:\s*\?\s*)?
-    (?:\s*
+    (?:\s*\?\s*)? # nullable suffix?
+    (?:\s* # array suffix?
       \[
-        (?:\s*,\s*)*
+        (?:\s*,\s*)* # commata for multi-dimensional arrays
       \]
       \s*
-      (?:\?)?
+      (?:\?)? # arrays can be nullable reference types
       \s*
     )*
   )
@@ -7576,21 +7673,21 @@
 (?&lt;type_name&gt;
   (?:
     (?:
-      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)?
-      (?&lt;name_and_type_args&gt;
+      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)? # alias-qualification
+      (?&lt;name_and_type_args&gt; # identifier + type arguments (if any)
         \g&lt;identifier&gt;\s*
         (?&lt;type_args&gt;\s*&lt;(?:[^&lt;&gt;]|\g&lt;type_args&gt;)+&gt;\s*)?
       )
-      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* |
+      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* | # Are there any more names being dotted into?
       (?&lt;tuple&gt;\s*\((?:[^\(\)]|\g&lt;tuple&gt;)+\))
     )
-    (?:\s*\?\s*)?
-    (?:\s*
+    (?:\s*\?\s*)? # nullable suffix?
+    (?:\s* # array suffix?
       \[
-        (?:\s*,\s*)*
+        (?:\s*,\s*)* # commata for multi-dimensional arrays
       \]
       \s*
-      (?:\?)?
+      (?:\?)? # arrays can be nullable reference types
       \s*
     )*
   )
@@ -7743,21 +7840,21 @@
 (?&lt;type_name&gt;
   (?:
     (?:
-      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)?
-      (?&lt;name_and_type_args&gt;
+      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)? # alias-qualification
+      (?&lt;name_and_type_args&gt; # identifier + type arguments (if any)
         \g&lt;identifier&gt;\s*
         (?&lt;type_args&gt;\s*&lt;(?:[^&lt;&gt;]|\g&lt;type_args&gt;)+&gt;\s*)?
       )
-      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* |
+      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* | # Are there any more names being dotted into?
       (?&lt;tuple&gt;\s*\((?:[^\(\)]|\g&lt;tuple&gt;)+\))
     )
-    (?:\s*\?\s*)?
-    (?:\s*
+    (?:\s*\?\s*)? # nullable suffix?
+    (?:\s* # array suffix?
       \[
-        (?:\s*,\s*)*
+        (?:\s*,\s*)* # commata for multi-dimensional arrays
       \]
       \s*
-      (?:\?)?
+      (?:\?)? # arrays can be nullable reference types
       \s*
     )*
   )
@@ -8214,21 +8311,21 @@
 (?&lt;type_name&gt;
   (?:
     (?:
-      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)?
-      (?&lt;name_and_type_args&gt;
+      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)? # alias-qualification
+      (?&lt;name_and_type_args&gt; # identifier + type arguments (if any)
         \g&lt;identifier&gt;\s*
         (?&lt;type_args&gt;&lt;(?:[^&lt;&gt;]|\g&lt;type_args&gt;)*&gt;\s*)?
       )
-      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* |
+      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* | # Are there any more names being dotted into?
       (?&lt;tuple&gt;\s*\((?:[^()]|\g&lt;tuple&gt;)*\))
     )
-    (?:\s*\?\s*)?
-    (?:\s*
+    (?:\s*\?\s*)? # nullable suffix?
+    (?:\s* # array suffix?
       \[
-        (?:\s*,\s*)*
+        (?:\s*,\s*)* # commata for multi-dimensional arrays
       \]
       \s*
-      (?:\?)?
+      (?:\?)? # arrays can be nullable reference types
       \s*
     )*
   )
@@ -8388,21 +8485,21 @@
 (?&lt;type_name&gt;
   (?:
     (?:
-      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)?
-      (?&lt;name_and_type_args&gt;
+      (?:(?&lt;identifier&gt;@?[_[:alpha:]][_[:alnum:]]*)\s*\:\:\s*)? # alias-qualification
+      (?&lt;name_and_type_args&gt; # identifier + type arguments (if any)
         \g&lt;identifier&gt;\s*
         (?&lt;type_args&gt;\s*&lt;(?:[^&lt;&gt;]|\g&lt;type_args&gt;)+&gt;\s*)?
       )
-      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* |
+      (?:\s*\.\s*\g&lt;name_and_type_args&gt;)* | # Are there any more names being dotted into?
       (?&lt;tuple&gt;\s*\((?:[^\(\)]|\g&lt;tuple&gt;)+\))
     )
-    (?:\s*\?\s*)?
-    (?:\s*
+    (?:\s*\?\s*)? # nullable suffix?
+    (?:\s* # array suffix?
       \[
-        (?:\s*,\s*)*
+        (?:\s*,\s*)* # commata for multi-dimensional arrays
       \]
       \s*
-      (?:\?)?
+      (?:\?)? # arrays can be nullable reference types
       \s*
     )*
   )
