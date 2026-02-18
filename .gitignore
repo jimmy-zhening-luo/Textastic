@@ -1,64 +1,9 @@
-##############################
-####      .gitignore      ####
-####       v252.2.0       ####
-##############################
-
-#DOC: https://git-scm.com/docs/gitignore
-
-#region Folder (./)
-# Build
-/dist/
-/build/
-/built/
-/bundle/
-/bundled/
-/pack/
-/packed/
-# Types
-/d/
-/dts/
-/d.ts/
-/declaration/
-/types/
-# Test
-/in/
-/input/
-/out/
-/output/
-#endregion
-
-
-#region Folder (**)
-# Build
-node_modules/
-.svelte-kit/
-# Local
 .vscode/**
 !.vscode/**/launch.json
 !.vscode/**/.code-workspace
 !.vscode/**/*.code-snippets
-# Trash
 .Trash/
-#endregion
-
-
-#region File (**)
-# Build
-*.dll
-*.exe
-*.tsbuildinfo
-.yarn-integrity
-# Local
-*.env
-*.env.*
-!*.env.example
 *.eslintcache
 *.log
-# Trash
 *.DS_Store
 *.icloud
-#endregion
-
-
-#region {CONFIGURE}
-#endregion
